@@ -1,4 +1,4 @@
-# YuanShenEx_Launcher
+# YuanShenEX_Launcher
 一个可以选择服务器的原神启动器
 
 
@@ -8,12 +8,12 @@
 ![BDS](https://img.shields.io/badge/support--Game--version-3.0.0-red)
 
 ![Title](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/title.png)
-## 🎁 原神启动器Ex 是什么
+## 🎁 原神启动器EX 是什么
 ### 这是一个可以在启动时任意选择进人官服或B服的启动器！
 ![效果截图](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png)
 
 
-## 🏆 原神启动器Ex 的优势
+## 🏆 原神启动器EX 的优势
 ### 为什么选择我们
 * 不封号 不修改破坏游戏数据
 * 外观美观 近似原版的启动器让您很快上手
