@@ -17,20 +17,14 @@ def mihoyo():
     try:
         config = configparser.ConfigParser()
         config.read("Config.ini") 
-        if config.get("General","game_version" ) == "": 
-            config.set("General","channel","1")
-            config.set("General","cps","mihoyo")
-            config.set("General","sub_channel","1")
-            config.write(open("Config.ini", "w"))
-            try:
-                os.system("start yuanshen.exe")                
-            except:
-                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
-        else:
-            try:
-                os.system("start yuanshen.exe")     
-            except:
-                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+        config.set("General","channel","1")
+        config.set("General","cps","mihoyo")
+        config.set("General","sub_channel","1")
+        config.write(open("Config.ini", "w"))
+        try:
+            os.system("start yuanshen.exe")     
+        except:
+            messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
     except:
         messagebox.showerror(title="找不到配置文件" , message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini 文件")
 
@@ -42,20 +36,14 @@ def bilibili():
         global GAME_VERSON
         config = configparser.ConfigParser()
         config.read("Config.ini")
-        if config.get("General","game_version" ) == "mihoyo":
-            config.set("General","channel","14")
-            config.set("General","cps","bilibili")
-            config.set("General","sub_channel","0")
-            config.write(open("Config.ini", "w"))
-            try:
-                os.system("start yuanshen.exe")     
-            except:
-                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
-        else:
-            try:
-                os.system("start yuanshen.exe")     
-            except:
-                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+        config.set("General","channel","14")
+        config.set("General","cps","bilibili")
+        config.set("General","sub_channel","0")
+        config.write(open("Config.ini", "w"))
+        try:
+            os.system("start yuanshen.exe")     
+        except:
+            messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
     except:
         messagebox.showerror(title="找不到配置文件" , message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini 文件")
     

@@ -41,7 +41,7 @@ missing module named 'org.python' - imported by pickle (optional), xml.sax (dela
 missing module named posix - imported by os (conditional, optional)
 missing module named resource - imported by posix (top-level), test.support (optional), psutil._pslinux (optional)
 missing module named cffi - imported by PIL.Image (optional), win32ctypes.core (optional), PIL.PyAccess (optional), PIL.ImageTk (delayed, conditional, optional)
-missing module named olefile - imported by PIL.FpxImagePlugin (top-level), PIL.MicImagePlugin (top-level)
+missing module named olefile - imported by PIL.MicImagePlugin (top-level), PIL.FpxImagePlugin (top-level)
 missing module named IPython - imported by PIL.ImageShow (optional)
 missing module named 'PySide2.QtGui' - imported by PIL.ImageQt (conditional, optional)
 missing module named 'PySide6.QtGui' - imported by PIL.ImageQt (conditional, optional)
