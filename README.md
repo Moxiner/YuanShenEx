@@ -48,7 +48,7 @@
 #### 游戏根目录示例截图
 ![目录截图示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/%E7%9B%AE%E5%BD%95%E5%B1%95%E7%A4%BA.png)
 
-### 【Step 4】打开 Launcher.exe
+### 【Step 3】打开 Launcher.exe
 * 选择您要进入的服务器
 * 同意安全权限
 * 等待游戏启动
