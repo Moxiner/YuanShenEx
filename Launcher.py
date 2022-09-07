@@ -83,7 +83,7 @@ def main():
     Window.mainloop()
 
 if __name__ == "__main__":
-    # try:
+    try:
         main()
-    # except:
-    #     messagebox.showerror(title="致命错误" , message="找不到背景图片\n并确保目录里有 background.png 文件")
+    except:
+        messagebox.showerror(title="致命错误" , message="找不到背景图片\n并确保目录里有 background.png 文件")
