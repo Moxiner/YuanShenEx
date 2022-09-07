@@ -57,6 +57,7 @@
 * 右键 Launcher.exe
 * 选择 发送到
 * 单击 桌面快捷方式
+
 ![右键创建桌面快捷方式示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/%E5%8F%B3%E9%94%AE.png)
 
 
@@ -68,4 +69,4 @@
 * 本项目可以转载，但请联系莫欣儿授权（无特殊情况一定会授权的！(●ˇ∀ˇ●)）并在明显地方标明由此出处
 
 
-
+___Copyright © 2022 MOxiner (or Moxiners). All Rights Reserved.___
