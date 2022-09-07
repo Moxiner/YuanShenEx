@@ -69,4 +69,4 @@
 * 本项目可以转载，但请联系莫欣儿授权（无特殊情况一定会授权的！(●ˇ∀ˇ●)）并在明显地方标明由此出处
 
 
-___Copyright © 2022 MOxiner (or Moxiners). All Rights Reserved.___
+___Copyright © 2022 Moxiner (or Moxiners). All Rights Reserved.___
