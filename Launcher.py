@@ -1,22 +1,36 @@
+from xml.etree.ElementTree import VERSION
 from PIL import Image ,ImageTk
 from tkinter import END, messagebox , font
 import tkinter as tk 
 from PIL import Image, ImageTk
 import os
 import configparser
+try:
+    config = configparser.ConfigParser()
+    config.read("Config.ini")
+    VERSION = "1.0.0"
+    GAME_VERSON = config.get("General","game_version" ) 
+except:
+    messagebox.showerror(title="找不到配置文件" , message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini")
 
 def mihoyo():
     try:
         config = configparser.ConfigParser()
-        config.read("Config.ini")
-        config.set("General","channel","1")
-        config.set("General","cps","mihoyo")
-        config.set("General","sub_channel","1")
-        config.write(open("Config.ini", "w"))
-        try:
-            os.system("start yuanshen.exe")                
-        except:
-            messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+        config.read("Config.ini") 
+        if config.get("General","game_version" ) == "": 
+            config.set("General","channel","1")
+            config.set("General","cps","mihoyo")
+            config.set("General","sub_channel","1")
+            config.write(open("Config.ini", "w"))
+            try:
+                os.system("start yuanshen.exe")                
+            except:
+                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+        else:
+            try:
+                os.system("start yuanshen.exe")     
+            except:
+                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
     except:
         messagebox.showerror(title="找不到配置文件" , message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini 文件")
 
@@ -25,16 +39,23 @@ def mihoyo():
 
 def bilibili():
     try:
+        global GAME_VERSON
         config = configparser.ConfigParser()
         config.read("Config.ini")
-        config.set("General","channel","14")
-        config.set("General","cps","bilibili")
-        config.set("General","sub_channel","0")
-        config.write(open("Config.ini", "w"))
-        try:
-            os.system("start yuanshen.exe")     
-        except:
-            messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+        if config.get("General","game_version" ) == "mihoyo":
+            config.set("General","channel","14")
+            config.set("General","cps","bilibili")
+            config.set("General","sub_channel","0")
+            config.write(open("Config.ini", "w"))
+            try:
+                os.system("start yuanshen.exe")     
+            except:
+                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+        else:
+            try:
+                os.system("start yuanshen.exe")     
+            except:
+                messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
     except:
         messagebox.showerror(title="找不到配置文件" , message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini 文件")
     
@@ -44,7 +65,7 @@ def bilibili():
 def main():
     global Window
     Window = tk.Tk()
-    Window.title("原神启动器")
+    Window.title(f"原神启动器 V{VERSION} With Game V{GAME_VERSON}")
     try:
         Window.iconbitmap("ico.ico")
     except:
@@ -74,7 +95,7 @@ def main():
     Window.mainloop()
 
 if __name__ == "__main__":
-    try:
+    # try:
         main()
-    except:
-        messagebox.showerror(title="致命错误" , message="找不到背景图片\n并确保目录里有 background.png 文件")
+    # except:
+    #     messagebox.showerror(title="致命错误" , message="找不到背景图片\n并确保目录里有 background.png 文件")
