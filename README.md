@@ -67,7 +67,7 @@
   * 本项目仅供参考学习，莫欣儿不会对您使用本项目产生的任何后果负责
   * 本项目为开源项目，项目及其衍生项目不得商用
   * 本项目可以转载，但请联系莫欣儿授权（无特殊情况一定会授权的！(●ˇ∀ˇ●)）并在明显地方标明由此出处
-* 有什么问题、建议、反馈 ，请提交至 👉[Github Issues](https://github.com/Moxiner/YuanShenEx_Launcher/releases)👈 \ 或 [QQ](https://s1.ax1x.com/2022/09/08/vbnzKs.png) 添加时请备注来意，谢谢！(≧∇≦)ﾉ
+* 有什么问题、建议、反馈 ，请提交至 👉[Github Issues](https://github.com/Moxiner/YuanShenEx_Launcher/issues)👈 \ 或 [QQ](https://s1.ax1x.com/2022/09/08/vbnzKs.png) 添加时请备注来意，谢谢！(≧∇≦)ﾉ
 
 
 
