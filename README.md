@@ -1,4 +1,4 @@
-# YuanShenEx_Launcher
+# YuanShenEX_Launcher
 一个可以选择服务器的原神启动器
 
 
@@ -8,10 +8,12 @@
 ![BDS](https://img.shields.io/badge/support--Game--version-3.0.0-red)
 
 ![Title](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/title.png)
-## 🎁 原神启动器Ex 是什么
+## 🎁 原神启动器EX 是什么
 ### 这是一个可以在启动时任意选择进人官服或B服的启动器！
+![效果截图](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png)
 
-## 🏆 原神启动器Ex 的优势
+
+## 🏆 原神启动器EX 的优势
 ### 为什么选择我们
 * 不封号 不修改破坏游戏数据
 * 外观美观 近似原版的启动器让您很快上手
@@ -24,8 +26,8 @@
 |服务器选择|约300MB|仅仅25MB
 |占用内存小|❌|✔
 |配置简单|❌|✔
-|背景自定义|❌|✔
 |更多功能|❌|✔
+
 
 ## 📚 使用说明
 ### 【Step 1】下载启动器压缩包
@@ -42,7 +44,10 @@
 ```
 * 将压缩包内所有文件解压（覆盖）到游戏根目录
 
-### 【Step 4】打开 Launcher.exe
+#### 游戏根目录示例截图
+![目录截图示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/%E7%9B%AE%E5%BD%95%E5%B1%95%E7%A4%BA.png)
+
+### 【Step 3】打开 Launcher.exe
 * 选择您要进入的服务器
 * 同意安全权限
 * 等待游戏启动
@@ -52,11 +57,17 @@
 * 选择 发送到
 * 单击 桌面快捷方式
 
+![右键创建桌面快捷方式示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/%E5%8F%B3%E9%94%AE.png)
+
+
+
 ## ✨ 注意事项
-* 本项目仅供参考学习，莫欣儿不会对您使用本项目产生的任何后果负责
-* 本项目为开源项目，项目及其衍生项目不得商用
-* 有什么问题、建议、反馈 ，请提交至 👉[Github Issues](https://github.com/Moxiner/YuanShenEx_Launcher/releases)👈 \ 或 [QQ](https://s1.ax1x.com/2022/09/08/vbnzKs.png) 添加时请备注来意，谢谢！(≧∇≦)ﾉ
-* 本项目可以转载，但请联系莫欣儿授权（无特殊情况一定会授权的！(●ˇ∀ˇ●)）并在明显地方标明由此出处
+* 您在使用本项目同时，需遵守 GPL 3.0 许可协议，同时需额外遵循以下补充要求
+  * 本项目仅供参考学习，莫欣儿不会对您使用本项目产生的任何后果负责
+  * 本项目为开源项目，项目及其衍生项目不得商用
+  * 本项目可以转载，但请联系莫欣儿授权（无特殊情况一定会授权的！(●ˇ∀ˇ●)）并在明显地方标明由此出处
+* 有什么问题、建议、反馈 ，请提交至 👉[Github Issues](https://github.com/Moxiner/YuanShenEx_Launcher/issues)👈 \ 或 [QQ](https://s1.ax1x.com/2022/09/08/vbnzKs.png) 添加时请备注来意，谢谢！(≧∇≦)ﾉ
 
 
 
+___Copyright © 2022 Moxiner (or Moxiners). All Rights Reserved.___
