@@ -4,6 +4,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import os
 import configparser
+from Downloard_img import download
 
 VERSION = "1.0.1"
 AUTHOR = "Moxiner"
@@ -76,7 +77,8 @@ def main():
         bg_load = Image.open("./src/background.png")
         bg_img = ImageTk.PhotoImage(bg_load)
     except:
-        messagebox.showerror(title="缺少文件" , message="缺少资源文件 src\\background.png \n请重新解压压缩包内所有文件！")
+        # messagebox.showerror(title="缺少文件" , message="缺少资源文件 src\\background.png \n请重新解压压缩包内所有文件！")
+        download("https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/background.png" , "src/background.png")
     canvas.create_image(640, 360, image=bg_img)
     # 绘制控件
     mihoyo_button = tk.Button(Window_frame , text="启动官服",width=23 , command=mihoyo ,height=40 ,background="#FFCB20" ,bd=0 ,activebackground="#d2a617" ,font=("微软雅黑",12,"bold"  ) , fg="#89601A")
@@ -95,6 +97,11 @@ def main():
     y_cordinate = int((Window.winfo_screenheight() / 2) - (720 / 2))
     Window.geometry("1280x720+{}+{}".format(x_cordinate, y_cordinate-20))
     Window.mainloop()
+
+
+
+
+
 
 
 if __name__ == "__main__":
