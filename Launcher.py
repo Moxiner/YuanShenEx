@@ -1,13 +1,16 @@
+from cgitb import text
 from PIL import Image ,ImageTk
 from tkinter import END, messagebox , font
 import tkinter as tk 
 from PIL import Image, ImageTk
 import os
 import configparser
-from Downloard_img import download
+from Downloard_src import download
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 AUTHOR = "Moxiner"
+url_bg = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/background.png"
+url_ico = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/ico.ico"
 
 def readConfig():
     '''读取配置文件'''
@@ -32,7 +35,7 @@ def mihoyo():
         config.set("General","sub_channel","1")
         config.write(open("Config.ini", "w"))
         try:
-            os.system("start yuanshen.exe")     
+            os.system("start yuanshen.exe") 
         except:
             messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
     except:
@@ -50,8 +53,7 @@ def bilibili():
         config.set("General","sub_channel","0")
         config.write(open("Config.ini", "w"))
         try:
-            os.system("start yuanshen.exe")
-                 
+            os.system("start yuanshen.exe")                 
         except:
             messagebox.showerror(title="找不到配置文件" , message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
     except:
@@ -78,7 +80,8 @@ def main():
         bg_img = ImageTk.PhotoImage(bg_load)
     except:
         # messagebox.showerror(title="缺少文件" , message="缺少资源文件 src\\background.png \n请重新解压压缩包内所有文件！")
-        download("https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/background.png" , "src/background.png")
+        download(url_bg , "src/background.png")
+        download(url_ico , "src/background.png")
     canvas.create_image(640, 360, image=bg_img)
     # 绘制控件
     mihoyo_button = tk.Button(Window_frame , text="启动官服",width=23 , command=mihoyo ,height=40 ,background="#FFCB20" ,bd=0 ,activebackground="#d2a617" ,font=("微软雅黑",12,"bold"  ) , fg="#89601A")
@@ -97,7 +100,6 @@ def main():
     y_cordinate = int((Window.winfo_screenheight() / 2) - (720 / 2))
     Window.geometry("1280x720+{}+{}".format(x_cordinate, y_cordinate-20))
     Window.mainloop()
-
 
 
 
