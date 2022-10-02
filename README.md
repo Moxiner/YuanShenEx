@@ -68,6 +68,8 @@
  * 重新解压压缩包内所有文件到游戏根目录即可
 * 启动速度慢？
  * 理论上，原神启动器EX 和 原版启动器启动速度持平，如果启动速度慢绝对不是因为原神启动器EX的原因 （除非给出证据）
+* 启动B服出现解析二级地址错误
+ * 请下载 [PCGameSDK.dll](https://wwu.lanzouy.com/iQE6V0cvyd2d) 并替换到 Genshin Impact Game/YuanShen_Data/Plugins文件夹里面，即可正常进行B服！
  
 
 ## 📑 版权许可
