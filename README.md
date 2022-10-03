@@ -5,7 +5,7 @@
 ![Liscense](https://img.shields.io/github/license/Moxiner/YuanShenEx_Launcher)
 ![Downloads](https://img.shields.io/github/downloads/Moxiner/YuanShenEx_Launcher/total)
 ![Release](https://img.shields.io/github/v/release/Moxiner/YuanShenEx_Launcher)
-![BDS](https://img.shields.io/badge/support--Game--version-3.0.0-red)
+![BDS](https://img.shields.io/badge/support--Game--version-3.1.0-red)
 
 ![Title](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/title.png)
 ## 🎁 原神启动器EX 是什么
