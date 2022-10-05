@@ -140,7 +140,6 @@ QPushButton:pressed {
       <string notr="true">background-color: rgb(255, 255, 255);
 border-top-right-radius:0px;
 border-top-left-radius:0px;
-hide:True
 </string>
      </property>
      <property name="frameShape">
@@ -277,6 +276,9 @@ QFrame {
        <property name="text">
         <string>创建开始快捷方式</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -303,7 +305,7 @@ QFrame {
        <widget class="QPushButton" name="Min_Bottom">
         <property name="styleSheet">
          <string notr="true">QPushButton:hover {
-	background-color: rgb(255, 255, 255 , 95);
+	background-color: rgba(255, 255, 255 ,95);
 }</string>
         </property>
         <property name="text">
@@ -325,7 +327,7 @@ QFrame {
        <widget class="QPushButton" name="Close_Buttom">
         <property name="styleSheet">
          <string notr="true">QPushButton:hover {
-	background-color: rgb(255, 0, 0 ， 95);
+	background-color: rgba(255, 0, 0 ,95);
 }</string>
         </property>
         <property name="text">

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'e:\Documents\Gitee\YuansShen_LauncherEX\yuanShenEx\installer\gui.ui'
+# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\gui.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -75,7 +75,6 @@ class Ui_installer(object):
         self.Bottom_Installer_Frame.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-top-right-radius:0px;\n"
 "border-top-left-radius:0px;\n"
-"hide:True\n"
 "")
         self.Bottom_Installer_Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.Bottom_Installer_Frame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -124,7 +123,7 @@ class Ui_installer(object):
         self.Installer_Label.setFont(font)
         self.Installer_Label.setObjectName("Installer_Label")
         self.CreateStartedLink_CheckBoc = QtWidgets.QCheckBox(self.Installer_Frame)
-        self.CreateStartedLink_CheckBoc.setGeometry(QtCore.QRect(20, 90, 180, 16))
+        self.CreateStartedLink_CheckBoc.setGeometry(QtCore.QRect(20, 90, 151, 16))
         font = QtGui.QFont()
         font.setFamily("有爱魔兽圆体 CN Medium")
         font.setPointSize(9)
@@ -132,13 +131,13 @@ class Ui_installer(object):
         self.CreateStartedLink_CheckBoc.setChecked(True)
         self.CreateStartedLink_CheckBoc.setObjectName("CreateStartedLink_CheckBoc")
         self.CreateDesktopLink_CheckBox = QtWidgets.QCheckBox(self.Installer_Frame)
-        self.CreateDesktopLink_CheckBox.setGeometry(QtCore.QRect(200, 90, 180, 16))
+        self.CreateDesktopLink_CheckBox.setGeometry(QtCore.QRect(150, 90, 131, 16))
         font = QtGui.QFont()
         font.setFamily("有爱魔兽圆体 CN Medium")
         font.setPointSize(9)
         self.CreateDesktopLink_CheckBox.setFont(font)
-        self.CreateDesktopLink_CheckBox.setObjectName("CreateDesktopLink_CheckBox")
         self.CreateDesktopLink_CheckBox.setChecked(True)
+        self.CreateDesktopLink_CheckBox.setObjectName("CreateDesktopLink_CheckBox")
         self.layoutWidget = QtWidgets.QWidget(self.Main_Widget)
         self.layoutWidget.setGeometry(QtCore.QRect(660, 0, 71, 30))
         self.layoutWidget.setObjectName("layoutWidget")
@@ -148,7 +147,7 @@ class Ui_installer(object):
         self.Top_Right_Layout.setObjectName("Top_Right_Layout")
         self.Min_Bottom = QtWidgets.QPushButton(self.layoutWidget)
         self.Min_Bottom.setStyleSheet("QPushButton:hover {\n"
-"    background-color: rgb(255, 255, 255 , 95);\n"
+"    background-color: rgba(255, 255, 255 ,95);\n"
 "}")
         self.Min_Bottom.setText("")
         icon = QtGui.QIcon()
@@ -159,7 +158,7 @@ class Ui_installer(object):
         self.Top_Right_Layout.addWidget(self.Min_Bottom)
         self.Close_Buttom = QtWidgets.QPushButton(self.layoutWidget)
         self.Close_Buttom.setStyleSheet("QPushButton:hover {\n"
-"    background-color: rgb(255, 0, 0 ， 95);\n"
+"    background-color: rgba(255, 0, 0 ,95);\n"
 "}")
         self.Close_Buttom.setText("")
         icon1 = QtGui.QIcon()
