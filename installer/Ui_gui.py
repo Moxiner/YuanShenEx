@@ -138,6 +138,7 @@ class Ui_installer(object):
         font.setPointSize(9)
         self.CreateDesktopLink_CheckBox.setFont(font)
         self.CreateDesktopLink_CheckBox.setObjectName("CreateDesktopLink_CheckBox")
+        self.CreateDesktopLink_CheckBox.setChecked(True)
         self.layoutWidget = QtWidgets.QWidget(self.Main_Widget)
         self.layoutWidget.setGeometry(QtCore.QRect(660, 0, 71, 30))
         self.layoutWidget.setObjectName("layoutWidget")
