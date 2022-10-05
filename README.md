@@ -87,7 +87,7 @@
 
 ## 🎭 参与开发人员&鸣谢名单
 
-|  ![Moxiner](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Moxiner.jpeg)     | ![Morbid](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Morbid.jpeg) |
+|  ![Moxiner](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Moxiner.png)     | ![Morbid](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Morbid.png) |
 | :------------------------------------------------------------------:  | :------------------------------------------------------------------: |
 |              [@Moxiner](https://github.com/Moxiner)                    |              [@Morbid](https://gitee.com/Morbid-zj)                  |                       
 
