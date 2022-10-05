@@ -7,10 +7,10 @@
 ![Release](https://img.shields.io/github/v/release/Moxiner/YuanShenEx_Launcher)
 ![BDS](https://img.shields.io/badge/support--Game--version-3.1.0-red)
 
-![Title](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/title.png)
+![Title](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/title.png)
 ## 🎁 原神启动器EX 是什么
 ### 这是一个可以在启动时任意选择进人官服或B服的启动器！
-![效果截图](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png)
+![效果截图](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png)
 
 
 ## 🏆 原神启动器EX 的优势
@@ -45,7 +45,7 @@
 * 将压缩包内所有文件解压（覆盖）到游戏根目录
 
 #### 游戏根目录示例截图
-![目录截图示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/%E7%9B%AE%E5%BD%95%E5%B1%95%E7%A4%BA.png)
+![目录截图示例](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E7%9B%AE%E5%BD%95%E5%B1%95%E7%A4%BA.png)
 
 ### 【Step 3】打开 Launcher.exe
 * 选择您要进入的服务器
@@ -57,7 +57,7 @@
 * 选择 发送到
 * 单击 桌面快捷方式
 
-![右键创建桌面快捷方式示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/%E5%8F%B3%E9%94%AE.png)
+![右键创建桌面快捷方式示例](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E5%8F%B3%E9%94%AE.png)
 
 
 
@@ -82,9 +82,13 @@
   * 本项目仅供参考学习，莫欣儿不会对您使用本项目产生的任何后果负责
   * 本项目为开源项目，项目及其衍生项目不得商用
   * 本项目可以转载，但请联系莫欣儿授权（无特殊情况一定会授权的！(●ˇ∀ˇ●)）并在明显地方标明由此出处
-* 有什么问题、建议、反馈 ，请提交至 👉[Github Issues](https://github.com/Moxiner/YuanShenEx_Launcher/issues)👈 \ 或 [QQ群](https://jq.qq.com/?_wv=1027&k=1rvEyeSA)
+* 有什么问题、建议、反馈 ，请提交至 👉[Github Issues](https://github.com/Moxiner/YuanShenEx_Launcher/issues)👈 \ 或 [QQ群](👉https://jq.qq.com/?_wv=1027&k=1rvEyeSA👈)
 (≧∇≦)ﾉ
 
+## 🎭 参与开发人员&鸣谢名单
 
+|  ![Moxiner](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Moxiner.png)     | ![Morbid](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Morbid.png) |
+| :------------------------------------------------------------------:  | :------------------------------------------------------------------: |
+|              [@Moxiner](https://github.com/Moxiner)                    |              [@Morbid](https://gitee.com/Morbid-zj)                  |                       
 
-___Copyright © 2022 Moxiner (or Moxiners). All Rights Reserved.___
+___Copyright © 2022 Moxiner And Morbid (or Moxiners). All Rights Reserved.___
