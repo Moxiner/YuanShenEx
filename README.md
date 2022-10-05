@@ -86,9 +86,9 @@
 (≧∇≦)ﾉ
 
 ## 🎭 参与开发人员&鸣谢名单
+
+|![Moxiner](https://avatars.githubusercontent.com/u/87905048?v=4)|![Morbid](https://portrait.gitee.com/uploads/avatars/user/3048/9144293_zhang-jie1493_1635670959.png!avatar200)
 ----|----|----|
-|![Moxiner](![image](https://user-images.githubusercontent.com/87905048/194157000-0b7b3544-50d4-49f2-8bf9-02674dd01a9f.png)
-)|![Morbid](https://avatars.githubusercontent.com/u/87905048?v=4)
 |Moxiner|Morbid
 
 
