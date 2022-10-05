@@ -87,8 +87,8 @@
 
 ## 🎭 参与开发人员&鸣谢名单
 
-|  ![Moxiner](https://avatars.githubusercontent.com/u/87905048?v=4)     | ![Morbid](https://portrait.gitee.com/uploads/avatars/user/3048/9144293_zhang-jie1493_1635670959.png!avatar200) |
+|  ![Moxiner](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Moxiner.jpeg)     | ![Morbid](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Morbid.jpeg) |
 | :------------------------------------------------------------------:  | :------------------------------------------------------------------: |
-|              [@ShrBox](https://github.com/Moxiner)                    |              [@Morbid](https://gitee.com/Morbid-zj)                  |                       
+|              [@Moxiner](https://github.com/Moxiner)                    |              [@Morbid](https://gitee.com/Morbid-zj)                  |                       
 
 ___Copyright © 2022 Moxiner And Morbid (or Moxiners). All Rights Reserved.___
