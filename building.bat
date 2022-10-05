@@ -1,1 +1,0 @@
-pyinstaller -F -i src/ico.ico -w Launcher.py
