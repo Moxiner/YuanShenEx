@@ -1,26 +1,17 @@
-'''
-@ Created with PyCharm Community Edition And VSCode
-@ Author Morbid And Moxiner
-@ Date 2022/10/04
-@ Time 20:47
+# @ Created with PyCharm Community Edition And VSCode
+# @ Author Morbid And Moxiner
+# @ Date 2022/10/04
+# @ Time 20:47
 
-@To Do:
-✔ 选择文件并获取文件位置
-🔧 安装 （复制文件到相应位置）
-➕ 是否添加快捷方式
-➕ 安装完成界面（InstallerStartButton 改变文字）
-
-@Error:
-❌ 文件位置报错
-File: This File
-Line: 89
-FileNotFoundError: [Errno 2] No such file or directory: 'src\\PCGameSDK.dll' 
-'''
+# @To Do:
+# ✔ 选择文件并获取文件位置
+# 🔧 安装 （复制文件到相应位置）
+# ➕ 是否添加快捷方式
+# ➕ 安装完成界面（InstallerStartButton 改变文字）
 
 from configparser import ConfigParser
-from fileinput import filename
 from os import makedirs, path, symlink
-from shutil import copyfile, copy, copytree
+from shutil import copyfile
 from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER
 from win32ui import CreateFileDialog
 from win32api import MessageBox
@@ -36,7 +27,10 @@ def get_desktop():
     return QueryValueEx(key, "Desktop")[0]
 
 
-###########################################################################
+def Message_Box(title, src):
+    MessageBox(0, src, title, MB_OK)
+
+
 # 窗口启动
 
 
@@ -63,7 +57,7 @@ class InstallerWindow(QMainWindow):
             self.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))  # 更改鼠标图标
 
     def mouseMoveEvent(self, mouse_event):
-        """更改窗口位置"""
+        # 更改窗口位置
         if QtCore.Qt.LeftButton and self.m_flag:
             self.move(mouse_event.globalPos() - self.m_Position)  # 更改窗口位置
             mouse_event.accept()
@@ -71,27 +65,31 @@ class InstallerWindow(QMainWindow):
     def mouseReleaseEvent(self, mouse_event):
         self.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
 
-    def choice_file(self, *arg):
-        '''选择文件'''
-        MessageBox(0, "点击确定后在游戏目录：...(你的路径)\\Genshin Impact\\Genshin Impact Gam中选择YuanShen.exe文件，即可自动安装", "注意了注意了",
-                   MB_OK)
+    def choice_file(self):
+        # 选择文件点击事件
+        # Message_Box("注意", "点击确定后在游戏目录：...(你的路径)\\Genshin Impact\\Genshin Impact Gam中选择YuanShen.exe文件，即可自动安装")
         lpsFilter = "EXE Files |YuanShen.exe|"
         dlg = CreateFileDialog(True, "YuanShen.exe", None, 0x04 | 0x02, lpsFilter)  # 1表⽰打开⽂件对话框
         dlg.SetOFNInitialDir(get_desktop())  # 设置打开⽂件对话框中的初始显⽰⽬录
         dlg.DoModal()
-        filename = dlg.GetPathName()  # 获取选择的⽂件名称
-        filename = filename[:filename.rfind("\\")]
-        self.ui.Path_LineEdit.setText(filename)
+        fileName = dlg.GetPathName()  # 获取选择的⽂件名称
+        fileName = fileName[:fileName.rfind("\\")]
+        self.ui.Path_LineEdit.setText(fileName)
 
-    def installer(self, *arg):
-        '''安装'''
-        filename = self.ui.Path_LineEdit.text()  # 读取 Path_LineEdit 数据
-        file = open(filename + "\\YuanSenEx.ini", 'w', encoding="UTF-8")
+    def installer(self):
+        # 安装点击事件
+        fileName = self.ui.Path_LineEdit.text()  # 读取 Path_LineEdit 数据
+        if len(fileName) == 0:
+            Message_Box("错误", "请先选择游戏路径")
+            return
+
+        # 添加YuanSenEx.ini文件
+        file = open(fileName + "\\YuanSenEx.ini", 'w', encoding="UTF-8")
         file.write("[url]\n[public]\n[GuanFu]\n[BFu]")
         file.close()
         config_YunShenEx = ConfigParser()
-        config_YunShenEx.read(filename + "\\YuanSenEx.ini", encoding="UTF-8")
-        config_YunShenEx.set("url", "Path", filename)
+        config_YunShenEx.read(fileName + "\\YuanSenEx.ini", encoding="UTF-8")
+        config_YunShenEx.set("url", "Path", fileName)
         config_YunShenEx.set("public", "game_version", "3.1.0")
         config_YunShenEx.set("public", "plugin_sdk_version", "3.5.0")
         config_YunShenEx.set("GuanFu", "channel", "1")
@@ -100,34 +98,45 @@ class InstallerWindow(QMainWindow):
         config_YunShenEx.set("BFu", "channel", "14")
         config_YunShenEx.set("BFu", "cps", "bilibili")
         config_YunShenEx.set("BFu", "sub_channel", "0")
-        config_YunShenEx.write(open(filename + "\\YuanSenEx.ini", "w", encoding="UTF-8"))
+        config_YunShenEx.write(open(fileName + "\\YuanSenEx.ini", "w", encoding="UTF-8"))
 
-        copyfile("src\\PCGameSDK.dll", filename + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
-        if not path.exists(filename + "\\src"):
-            makedirs(filename + "\\src")
-        copyfile("src\\ico.ico", filename + "\\src\\ico.ico")
-        copyfile("src\\background.png", filename + "\\src\\background.png")
-        # copyfile("src\\config.ini", filename + "\\config.ini")
-        # 如果ini不存在创建一下
-        if not path.exists(filename + "\\config.ini"):
-            file = open(filename + "\\config.ini", 'w', encoding="UTF-8")
+        # 复制PCGameSDK.dll文件
+        copyfile("src\\PCGameSDK.dll", fileName + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
+        if not path.exists(fileName + "\\src"):
+            makedirs(fileName + "\\src")
+        copyfile("src\\ico.ico", fileName + "\\src\\ico.ico")
+        copyfile("src\\background.png", fileName + "\\src\\background.png")
+
+        # 如果ini不存在则创建
+        if not path.exists(fileName + "\\config.ini"):
+            file = open(fileName + "\\config.ini", 'w', encoding="UTF-8")
             file.write("[General]")
             file.close()
+        # 从YuanSenEx.ini读取数据写入config.ini文件
         config_config = ConfigParser()
-        config_config.read(filename + "\\config.ini", encoding="UTF-8")
+        config_config.read(fileName + "\\config.ini", encoding="UTF-8")
         config_config.set("General", "channel", config_YunShenEx.get("GuanFu", "channel"))
         config_config.set("General", "cps", config_YunShenEx.get("GuanFu", "cps"))
         config_config.set("General", "game_version", config_YunShenEx.get("public", "game_version"))
         config_config.set("General", "sub_channel", config_YunShenEx.get("GuanFu", "sub_channel"))
         config_config.set("General", "plugin_sdk_version", config_YunShenEx.get("public", "plugin_sdk_version"))
-        config_config.write(open(filename + "\\config.ini", "w", encoding="UTF-8"))
-        copyfile("src\\Launcher.exe", filename + "\\Launcher.exe")
-        symlink(filename + "\\Launcher.exe", get_desktop() + "\\原神双服启动器")
-        MessageBox(0, "安装完成", "提示", MB_OK)
+        config_config.write(open(fileName + "\\config.ini", "w", encoding="UTF-8"))
 
-    # 启动窗口
+        # 复制Launcher.exe启动器
+        copyfile("src\\Launcher.exe", fileName + "\\Launcher.exe")
+
+        # 创建桌面快捷方式
+        if self.ui.CreateStartedLink_CheckBoc.isChecked():
+            symlink(fileName + "\\Launcher.exe", get_desktop() + "\\原神双服启动器")
+
+        # 创建开始菜单快捷方式
+        if self.ui.CreateDesktopLink_CheckBox.isChecked():
+            pass
+
+        Message_Box("提示", "安装完成")
 
 
+# 创建对象，调用创建主窗口方法，进去消息循环
 if __name__ == '__main__':
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
