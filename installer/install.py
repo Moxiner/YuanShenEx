@@ -16,7 +16,7 @@ from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER
 from win32ui import CreateFileDialog
 from win32api import MessageBox
 from win32con import MB_OK
-from Ui_gui import Ui_installer
+from Ui_Installer import Ui_installer
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui
 import sys
