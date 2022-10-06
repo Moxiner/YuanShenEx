@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>759</width>
-    <height>683</height>
+    <width>761</width>
+    <height>493</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,7 +43,7 @@ QWidget{
        <x>0</x>
        <y>0</y>
        <width>730</width>
-       <height>391</height>
+       <height>331</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -347,12 +347,51 @@ QFrame {
       </item>
      </layout>
     </widget>
+    <widget class="QPushButton" name="InstallerEnd_Button">
+     <property name="geometry">
+      <rect>
+       <x>265</x>
+       <y>240</y>
+       <width>200</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>有爱魔兽圆体 CN Medium</family>
+       <pointsize>11</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	background-color: rgb(255, 200, 31);
+	border-radius:5
+}
+QPushButton:pressed {
+	background-color:rgb(185, 144, 22);
+	border-radius:5
+
+}</string>
+     </property>
+     <property name="text">
+      <string>安装完成</string>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
     <zorder>Fontground_Label</zorder>
     <zorder>Title_Lable</zorder>
     <zorder>Top_Right_Frame</zorder>
     <zorder>Bottom_Installer_Frame</zorder>
     <zorder>layoutWidget</zorder>
     <zorder>InstallerStart_Button</zorder>
+    <zorder>InstallerEnd_Button</zorder>
    </widget>
   </widget>
  </widget>
@@ -389,6 +428,22 @@ QFrame {
     <hint type="destinationlabel">
      <x>698</x>
      <y>13</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>InstallerEnd_Button</sender>
+   <signal>clicked()</signal>
+   <receiver>installer</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>384</x>
+     <y>488</y>
     </hint>
    </hints>
   </connection>

@@ -40,12 +40,19 @@ class InstallerWindow(QMainWindow):
         self.m_flag = False
         self.ui = Ui_installer()
         self.ui.setupUi(self)
+        self.hide()
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.m_Position = None
         self.ui.InstallerStart_Button.clicked.connect(self.installer)  # 绑定 InstallerStart_Button 点击事件
         self.ui.Look_Button.clicked.connect(self.choice_file)  # 绑定 Look_Button 点击事件
         self.show()
+
+
+    def hide(self):
+        '''隐藏部件'''
+        self.ui.InstallerEnd_Button.setEnabled(False)
+        self.ui.InstallerEnd_Button.setHidden(True)
 
     # 拖动窗口
     def mousePressEvent(self, event):
@@ -84,6 +91,9 @@ class InstallerWindow(QMainWindow):
             return
 
         # 添加YuanSenEx.ini文件
+        self.ui.InstallerStart_Button.setVisible(False)
+        self.ui.Bottom_Installer_Frame.setVisible(False)
+
         file = open(fileName + "\\YuanSenEx.ini", 'w', encoding="UTF-8")
         file.write("[url]\n[public]\n[GuanFu]\n[BFu]")
         file.close()
@@ -132,9 +142,9 @@ class InstallerWindow(QMainWindow):
         # 创建开始菜单快捷方式
         if self.ui.CreateDesktopLink_CheckBox.isChecked():
             pass
-
-        Message_Box("提示", "安装完成")
-
+        self.ui.InstallerEnd_Button.setHidden(False)
+        # Message_Box("提示", "安装完成")
+        self.ui.InstallerEnd_Button.setEnabled(True)
 
 # 创建对象，调用创建主窗口方法，进去消息循环
 if __name__ == '__main__':
