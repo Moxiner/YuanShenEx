@@ -17,7 +17,7 @@ Line: 89
 FileNotFoundError: [Errno 2] No such file or directory: 'src\\PCGameSDK.dll' 
 '''
 
-import configparser
+from configparser import ConfigParser
 from fileinput import filename
 from os import makedirs, path, symlink
 from shutil import copyfile, copy, copytree
@@ -30,12 +30,12 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui
 import sys
 
+
 def get_desktop():
     key = OpenKey(HKEY_CURRENT_USER, r'Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders')
     return QueryValueEx(key, "Desktop")[0]
 
 
-        
 ###########################################################################
 # 窗口启动
 
@@ -50,7 +50,7 @@ class InstallerWindow(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.m_Position = None
         self.ui.InstallerStart_Button.clicked.connect(self.installer)  # 绑定 InstallerStart_Button 点击事件
-        self.ui.Look_Button.clicked.connect(self.choice_file)        # 绑定 Look_Button 点击事件
+        self.ui.Look_Button.clicked.connect(self.choice_file)  # 绑定 Look_Button 点击事件
         self.show()
 
     # 拖动窗口
@@ -70,11 +70,11 @@ class InstallerWindow(QMainWindow):
 
     def mouseReleaseEvent(self, mouse_event):
         self.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
-    
 
-    def choice_file(self , *arg):
+    def choice_file(self, *arg):
         '''选择文件'''
-        MessageBox(0, "点击确定后在游戏目录：...(你的路径)\\Genshin Impact\\Genshin Impact Gam中选择YuanShen.exe文件，即可自动安装", "注意了注意了", MB_OK)
+        MessageBox(0, "点击确定后在游戏目录：...(你的路径)\\Genshin Impact\\Genshin Impact Gam中选择YuanShen.exe文件，即可自动安装", "注意了注意了",
+                   MB_OK)
         lpsFilter = "EXE Files |YuanShen.exe|"
         dlg = CreateFileDialog(True, "YuanShen.exe", None, 0x04 | 0x02, lpsFilter)  # 1表⽰打开⽂件对话框
         dlg.SetOFNInitialDir(get_desktop())  # 设置打开⽂件对话框中的初始显⽰⽬录
@@ -83,38 +83,51 @@ class InstallerWindow(QMainWindow):
         filename = filename[:filename.rfind("\\")]
         self.ui.Path_LineEdit.setText(filename)
 
-    def installer(self,*arg):
+    def installer(self, *arg):
         '''安装'''
-        filename = self.ui.Path_LineEdit.text() # 读取 Path_LineEdit 数据
+        filename = self.ui.Path_LineEdit.text()  # 读取 Path_LineEdit 数据
         file = open(filename + "\\YuanSenEx.ini", 'w', encoding="UTF-8")
-        file.write("[url]\n[public]\n[GunFu]\n[BFu]")
+        file.write("[url]\n[public]\n[GuanFu]\n[BFu]")
         file.close()
-        config = configparser.ConfigParser()
-        config.read(filename + "\\YuanSenEx.ini", encoding="UTF-8")
-        config.set("url", "Path", filename)
-        config.set("public", "game_version", "3.1.0")
-        config.set("public", "plugin_sdk_version", "3.5.0")
-        config.set("GunFu", "channel", "1")
-        config.set("GunFu", "cps", "mihoyo")
-        config.set("GunFu", "sub_channel", "1")
-        config.set("BFu", "channel", "14")
-        config.set("BFu", "cps", "bilibili")
-        config.set("BFu", "sub_channel", "0")
-        config.write(open(filename + "\\YuanSenEx.ini", "w", encoding="UTF-8"))
+        config_YunShenEx = ConfigParser()
+        config_YunShenEx.read(filename + "\\YuanSenEx.ini", encoding="UTF-8")
+        config_YunShenEx.set("url", "Path", filename)
+        config_YunShenEx.set("public", "game_version", "3.1.0")
+        config_YunShenEx.set("public", "plugin_sdk_version", "3.5.0")
+        config_YunShenEx.set("GuanFu", "channel", "1")
+        config_YunShenEx.set("GuanFu", "cps", "mihoyo")
+        config_YunShenEx.set("GuanFu", "sub_channel", "1")
+        config_YunShenEx.set("BFu", "channel", "14")
+        config_YunShenEx.set("BFu", "cps", "bilibili")
+        config_YunShenEx.set("BFu", "sub_channel", "0")
+        config_YunShenEx.write(open(filename + "\\YuanSenEx.ini", "w", encoding="UTF-8"))
 
         copyfile("src\\PCGameSDK.dll", filename + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
         if not path.exists(filename + "\\src"):
             makedirs(filename + "\\src")
         copyfile("src\\ico.ico", filename + "\\src\\ico.ico")
         copyfile("src\\background.png", filename + "\\src\\background.png")
-        copyfile("src\\config.ini", filename + "\\config.ini")
+        # copyfile("src\\config.ini", filename + "\\config.ini")
+        # 如果ini不存在创建一下
+        if not path.exists(filename + "\\config.ini"):
+            file = open(filename + "\\config.ini", 'w', encoding="UTF-8")
+            file.write("[General]")
+            file.close()
+        config_config = ConfigParser()
+        config_config.read(filename + "\\config.ini", encoding="UTF-8")
+        config_config.set("General", "channel", config_YunShenEx.get("GuanFu", "channel"))
+        config_config.set("General", "cps", config_YunShenEx.get("GuanFu", "cps"))
+        config_config.set("General", "game_version", config_YunShenEx.get("public", "game_version"))
+        config_config.set("General", "sub_channel", config_YunShenEx.get("GuanFu", "sub_channel"))
+        config_config.set("General", "plugin_sdk_version", config_YunShenEx.get("public", "plugin_sdk_version"))
+        config_config.write(open(filename + "\\config.ini", "w", encoding="UTF-8"))
         copyfile("src\\Launcher.exe", filename + "\\Launcher.exe")
         symlink(filename + "\\Launcher.exe", get_desktop() + "\\原神双服启动器")
-        MessageBox(0, "安装完成", "提示", MB_OK)    
-    
-            
+        MessageBox(0, "安装完成", "提示", MB_OK)
 
-# 启动窗口
+    # 启动窗口
+
+
 if __name__ == '__main__':
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)

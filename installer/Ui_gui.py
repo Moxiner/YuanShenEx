@@ -115,6 +115,7 @@ class Ui_installer(object):
         self.Path_LineEdit = QtWidgets.QLineEdit(self.Installer_Frame)
         self.Path_LineEdit.setGeometry(QtCore.QRect(20, 40, 531, 31))
         self.Path_LineEdit.setObjectName("Path_LineEdit")
+        self.Path_LineEdit.setReadOnly(True)  # 无法选中
         self.Installer_Label = QtWidgets.QLabel(self.Installer_Frame)
         self.Installer_Label.setGeometry(QtCore.QRect(20, 0, 111, 31))
         font = QtGui.QFont()
