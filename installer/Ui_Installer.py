@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\gui.ui'
+# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\Installer.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
