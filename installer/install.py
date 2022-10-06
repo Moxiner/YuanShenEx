@@ -16,6 +16,8 @@ from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER
 from win32ui import CreateFileDialog
 from win32api import MessageBox
 from win32con import MB_OK
+
+from Launcher.Downloard_src import download
 from Ui_gui import Ui_installer
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui
@@ -106,6 +108,8 @@ class InstallerWindow(QMainWindow):
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/PCGameSDK.dll",
+                     fileName + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
 
         # 判断并创建src目录
         if not path.exists(fileName + "\\src"):
@@ -117,6 +121,8 @@ class InstallerWindow(QMainWindow):
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/ico.ico",
+                     fileName + "\\src\\ico.ico")
 
         # 复制background.png
         try:
@@ -124,6 +130,8 @@ class InstallerWindow(QMainWindow):
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/background.png",
+                     fileName + "\\src\\background.png")
 
         # 如果ini不存在则创建
         if not path.exists(fileName + "\\config.ini"):
@@ -147,6 +155,8 @@ class InstallerWindow(QMainWindow):
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/Launcher.exe",
+                     fileName + "\\Launcher.exe")
 
         # 创建桌面快捷方式
         if self.ui.CreateStartedLink_CheckBoc.isChecked():
