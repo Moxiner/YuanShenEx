@@ -44,10 +44,11 @@ class TipWindow(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.m_Position = None
 
-    def show(self , title ,content):
+    def Message_Shoe(self, title, content):
         self.ui.Title_Label.setText(title)
         self.ui.Content_Label.setText(content)
-        self.show()    
+        self.show()
+
 
 class InstallerWindow(QMainWindow):
     def __init__(self):
@@ -63,9 +64,8 @@ class InstallerWindow(QMainWindow):
         self.ui.Look_Button.clicked.connect(self.choice_file)  # 绑定 Look_Button 点击事件
         self.show()
 
-
     def hide(self):
-        '''隐藏部件'''
+        # 隐藏部件
         self.ui.InstallerEnd_Button.setEnabled(False)
         self.ui.InstallerEnd_Button.setHidden(True)
 
@@ -102,7 +102,7 @@ class InstallerWindow(QMainWindow):
         # 安装点击事件
         fileName = self.ui.Path_LineEdit.text()  # 读取 Path_LineEdit 数据
         if len(fileName) == 0:
-            TipWindow.show(TipWindow(QMainWindow) ,"错误", "请先选择游戏路径")
+            tip.Message_Shoe("错误", "请先选择游戏路径")
             return
 
         # 添加YuanSenEx.ini文件
@@ -174,15 +174,15 @@ class InstallerWindow(QMainWindow):
             print(result)
 
         # 创建桌面快捷方式
-        if self.ui.CreateStartedLink_CheckBoc.isChecked():
+        if self.ui.CreateStartedLink_CheckBox.isChecked():
             symlink(fileName + "\\Launcher.exe", get_desktop() + "\\原神双服启动器")
-
         # 创建开始菜单快捷方式
         if self.ui.CreateDesktopLink_CheckBox.isChecked():
             pass
         self.ui.InstallerStart_Button.setEnabled(False)
         self.ui.InstallerEnd_Button.setHidden(False)
         self.ui.InstallerEnd_Button.setEnabled(True)
+
 
 # 创建对象，调用创建主窗口方法，进去消息循环
 if __name__ == '__main__':
@@ -191,4 +191,3 @@ if __name__ == '__main__':
     win = InstallerWindow()
     tip = TipWindow()
     sys.exit(app.exec_())
-
