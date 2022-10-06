@@ -101,17 +101,36 @@ class InstallerWindow(QMainWindow):
         config_YunShenEx.write(open(fileName + "\\YuanSenEx.ini", "w", encoding="UTF-8"))
 
         # 复制PCGameSDK.dll文件
-        copyfile("src\\PCGameSDK.dll", fileName + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
+        try:
+            copyfile("src\\PCGameSDK.dll", fileName + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
+        except Exception as result:
+            # 打印错误信息
+            print(result)
+
+        # 判断并创建src目录
         if not path.exists(fileName + "\\src"):
             makedirs(fileName + "\\src")
-        copyfile("src\\ico.ico", fileName + "\\src\\ico.ico")
-        copyfile("src\\background.png", fileName + "\\src\\background.png")
+
+        # 复制ico.ico文件
+        try:
+            copyfile("src\\ico.ico", fileName + "\\src\\ico.ico")
+        except Exception as result:
+            # 打印错误信息
+            print(result)
+
+        # 复制background.png
+        try:
+            copyfile("src\\background.png", fileName + "\\src\\background.png")
+        except Exception as result:
+            # 打印错误信息
+            print(result)
 
         # 如果ini不存在则创建
         if not path.exists(fileName + "\\config.ini"):
             file = open(fileName + "\\config.ini", 'w', encoding="UTF-8")
             file.write("[General]")
             file.close()
+
         # 从YuanSenEx.ini读取数据写入config.ini文件
         config_config = ConfigParser()
         config_config.read(fileName + "\\config.ini", encoding="UTF-8")
@@ -123,7 +142,11 @@ class InstallerWindow(QMainWindow):
         config_config.write(open(fileName + "\\config.ini", "w", encoding="UTF-8"))
 
         # 复制Launcher.exe启动器
-        copyfile("src\\Launcher.exe", fileName + "\\Launcher.exe")
+        try:
+            copyfile("src\\Launcher.exe", fileName + "\\Launcher.exe")
+        except Exception as result:
+            # 打印错误信息
+            print(result)
 
         # 创建桌面快捷方式
         if self.ui.CreateStartedLink_CheckBoc.isChecked():
