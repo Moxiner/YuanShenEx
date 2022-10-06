@@ -17,6 +17,7 @@ from win32ui import CreateFileDialog
 from win32api import MessageBox
 from win32con import MB_OK
 from Ui_Installer import Ui_installer
+from Ui_Tip import Ui_tip
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui
 import sys
@@ -32,7 +33,21 @@ def Message_Box(title, src):
 
 
 # 窗口启动
+class TipWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.m_flag = False
+        self.ui = Ui_tip()
+        self.ui.setupUi(self)
+        self.hide()
+        self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.m_Position = None
 
+    def show(self , title ,content):
+        self.ui.Title_Label.setText(title)
+        self.ui.Content_Label.setText(content)
+        self.show()    
 
 class InstallerWindow(QMainWindow):
     def __init__(self):
@@ -87,7 +102,7 @@ class InstallerWindow(QMainWindow):
         # 安装点击事件
         fileName = self.ui.Path_LineEdit.text()  # 读取 Path_LineEdit 数据
         if len(fileName) == 0:
-            Message_Box("错误", "请先选择游戏路径")
+            TipWindow.show(TipWindow(QMainWindow) ,"错误", "请先选择游戏路径")
             return
 
         # 添加YuanSenEx.ini文件
@@ -165,8 +180,8 @@ class InstallerWindow(QMainWindow):
         # 创建开始菜单快捷方式
         if self.ui.CreateDesktopLink_CheckBox.isChecked():
             pass
+        self.ui.InstallerStart_Button.setEnabled(False)
         self.ui.InstallerEnd_Button.setHidden(False)
-        # Message_Box("提示", "安装完成")
         self.ui.InstallerEnd_Button.setEnabled(True)
 
 # 创建对象，调用创建主窗口方法，进去消息循环
@@ -174,4 +189,6 @@ if __name__ == '__main__':
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(sys.argv)
     win = InstallerWindow()
+    tip = TipWindow()
     sys.exit(app.exec_())
+
