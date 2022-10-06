@@ -49,6 +49,11 @@ class InstallerWindow(QMainWindow):
         self.ui.Look_Button.clicked.connect(self.choice_file)  # 绑定 Look_Button 点击事件
         self.show()
 
+    def hide(self):
+        '''隐藏部件'''
+        self.ui.InstallerEnd_Button.setEnabled(False)
+        self.ui.InstallerEnd_Button.setHidden(True)
+
     # 拖动窗口
     def mousePressEvent(self, event):
         """获取鼠标相对窗口的位置"""
@@ -166,7 +171,9 @@ class InstallerWindow(QMainWindow):
         if self.ui.CreateDesktopLink_CheckBox.isChecked():
             pass
 
-        Message_Box("提示", "安装完成")
+        self.ui.InstallerEnd_Button.setHidden(False)
+        # Message_Box("提示", "安装完成")
+        self.ui.InstallerEnd_Button.setEnabled(True)
 
 
 # 创建对象，调用创建主窗口方法，进去消息循环
