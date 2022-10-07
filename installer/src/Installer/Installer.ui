@@ -203,7 +203,7 @@ QFrame {
 }</string>
        </property>
        <property name="text">
-        <string>选择文件位置</string>
+        <string>定位游戏</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="Path_LineEdit">
@@ -479,7 +479,7 @@ QPushButton:pressed {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="src/Installer/styple.qrc">
+          <iconset resource="styple.qrc">
            <normaloff>:/ico/min.png</normaloff>:/ico/min.png</iconset>
          </property>
          <property name="iconSize">
@@ -501,7 +501,7 @@ QPushButton:pressed {
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="src/Installer/styple.qrc">
+          <iconset resource="styple.qrc">
            <normaloff>:/ico/close.png</normaloff>:/ico/close.png</iconset>
          </property>
          <property name="iconSize">
@@ -525,14 +525,14 @@ QPushButton:pressed {
   </widget>
  </widget>
  <resources>
-  <include location="src/Installer/styple.qrc"/>
+  <include location="styple.qrc"/>
  </resources>
  <connections>
   <connection>
    <sender>Min_Bottom</sender>
    <signal>clicked()</signal>
    <receiver>installer</receiver>
-   <slot>close()</slot>
+   <slot>showMinimized()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>698</x>

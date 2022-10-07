@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\Installer.ui'
+# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\src\Installer\Installer.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -264,7 +264,7 @@ class Ui_installer(object):
         installer.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(installer)
-        self.Min_Bottom.clicked.connect(installer.close)
+        self.Min_Bottom.clicked.connect(installer.showMinimized)
         self.Close_Buttom.clicked.connect(installer.close)
         QtCore.QMetaObject.connectSlotsByName(installer)
 
@@ -273,7 +273,7 @@ class Ui_installer(object):
         installer.setWindowTitle(_translate("installer", "MainWindow"))
         self.Title_Lable.setText(_translate("installer", "原神启动器EX安装程序"))
         self.InstallerStart_Button.setText(_translate("installer", "立即安装"))
-        self.Look_Button.setText(_translate("installer", "选择文件位置"))
+        self.Look_Button.setText(_translate("installer", "定位游戏"))
         self.Installer_Label.setText(_translate("installer", "安装位置"))
         self.CreateStartedLink_CheckBox.setText(_translate("installer", "创建桌面快捷方式"))
         self.CreateDesktopLink_CheckBox.setText(_translate("installer", "创建开始快捷方式"))
