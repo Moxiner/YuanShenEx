@@ -85,9 +85,9 @@
 * 有什么问题、建议、反馈 ，请提交至 👉[Github Issues](https://github.com/Moxiner/YuanShenEx_Launcher/issues)👈 \ 或 [QQ群](👉https://jq.qq.com/?_wv=1027&k=1rvEyeSA👈)
 (≧∇≦)ﾉ
 
-## 🎭 参与开发人员&鸣谢名单
+## 🎭 开发团队 & 鸣谢名单
 
-|  ![Moxiner](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Moxiner.png)     | ![Morbid](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Morbid.png) |
+|  ![Moxiner](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Moxiner.png)     | ![Morbid](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Morbid.png) |
 | :------------------------------------------------------------------:  | :------------------------------------------------------------------: |
 |              [@Moxiner](https://github.com/Moxiner)                    |              [@Morbid](https://gitee.com/Morbid-zj)                  |                       
 
