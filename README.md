@@ -7,10 +7,10 @@
 ![Release](https://img.shields.io/github/v/release/Moxiner/YuanShenEx_Launcher)
 ![BDS](https://img.shields.io/badge/support--Game--version-3.1.0-red)
 
-![Title](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/title.png)
+![Title](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/title.png)
 ## 🎁 原神启动器EX 是什么
 ### 这是一个可以在启动时任意选择进人官服或B服的启动器！
-![效果截图](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png)
+![效果截图](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png)
 
 
 ## 🏆 原神启动器EX 的优势
@@ -45,7 +45,7 @@
 * 将压缩包内所有文件解压（覆盖）到游戏根目录
 
 #### 游戏根目录示例截图
-![目录截图示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/%E7%9B%AE%E5%BD%95%E5%B1%95%E7%A4%BA.png)
+![目录截图示例](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E7%9B%AE%E5%BD%95%E5%B1%95%E7%A4%BA.png)
 
 ### 【Step 3】打开 Launcher.exe
 * 选择您要进入的服务器
@@ -57,7 +57,7 @@
 * 选择 发送到
 * 单击 桌面快捷方式
 
-![右键创建桌面快捷方式示例](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/%E5%8F%B3%E9%94%AE.png)
+![右键创建桌面快捷方式示例](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E5%8F%B3%E9%94%AE.png)
 
 
 
@@ -87,7 +87,7 @@
 
 ## 🎭 参与开发人员&鸣谢名单
 
-|  ![Moxiner](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Moxiner.png)     | ![Morbid](https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/docs/headimg/Morbid.png) |
+|  ![Moxiner](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Moxiner.png)     | ![Morbid](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Morbid.png) |
 | :------------------------------------------------------------------:  | :------------------------------------------------------------------: |
 |              [@Moxiner](https://github.com/Moxiner)                    |              [@Morbid](https://gitee.com/Morbid-zj)                  |                       
 
