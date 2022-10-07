@@ -1,4 +1,4 @@
-pyinstaller -F -w ..\install.py -i .\ico.ico --uac-admin
+pyinstaller -F -w ..\install.py -i ..\..\res\ico.ico --uac-admin
 del .\*.spec
 copy .\dist\* ..\
 rd /s /q .\dist

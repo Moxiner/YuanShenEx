@@ -10,8 +10,13 @@
     <x>0</x>
     <y>0</y>
     <width>761</width>
-    <height>493</height>
+    <height>491</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>微软雅黑</family>
+   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -20,11 +25,16 @@
    <widget class="QWidget" name="Main_Widget" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>10</y>
       <width>730</width>
-      <height>471</height>
+      <height>470</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微软雅黑</family>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -43,8 +53,13 @@ QWidget{
        <x>0</x>
        <y>0</y>
        <width>730</width>
-       <height>331</height>
+       <height>330</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>微软雅黑</family>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">border-image: url(:/img/background.png);
@@ -66,7 +81,7 @@ border-bottom-left-radius:0px;</string>
      </property>
      <property name="font">
       <font>
-       <family>有爱魔兽圆体 CN</family>
+       <family>微软雅黑</family>
        <pointsize>10</pointsize>
        <weight>75</weight>
        <bold>true</bold>
@@ -77,22 +92,6 @@ border-bottom-left-radius:0px;</string>
      </property>
      <property name="text">
       <string>原神启动器EX安装程序</string>
-     </property>
-    </widget>
-    <widget class="QFrame" name="Top_Right_Frame">
-     <property name="geometry">
-      <rect>
-       <x>570</x>
-       <y>0</y>
-       <width>71</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
      </property>
     </widget>
     <widget class="QPushButton" name="InstallerStart_Button">
@@ -106,7 +105,7 @@ border-bottom-left-radius:0px;</string>
      </property>
      <property name="font">
       <font>
-       <family>有爱魔兽圆体 CN Medium</family>
+       <family>微软雅黑</family>
        <pointsize>11</pointsize>
        <weight>50</weight>
        <bold>false</bold>
@@ -133,7 +132,7 @@ QPushButton:pressed {
        <x>0</x>
        <y>330</y>
        <width>730</width>
-       <height>141</height>
+       <height>140</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -193,7 +192,7 @@ QFrame {
        </property>
        <property name="font">
         <font>
-         <family>有爱魔兽圆体 CN Medium</family>
+         <family>微软雅黑</family>
          <pointsize>7</pointsize>
         </font>
        </property>
@@ -216,6 +215,11 @@ QFrame {
          <height>31</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+        </font>
+       </property>
       </widget>
       <widget class="QLabel" name="Installer_Label">
        <property name="geometry">
@@ -228,7 +232,7 @@ QFrame {
        </property>
        <property name="font">
         <font>
-         <family>有爱魔兽圆体 CN Medium</family>
+         <family>微软雅黑</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -236,7 +240,7 @@ QFrame {
         <string>安装位置</string>
        </property>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
          <x>20</x>
@@ -253,7 +257,7 @@ QFrame {
          <widget class="QCheckBox" name="CreateStartedLink_CheckBox">
           <property name="font">
            <font>
-            <family>有爱魔兽圆体 CN Medium</family>
+            <family>微软雅黑</family>
             <pointsize>9</pointsize>
            </font>
           </property>
@@ -269,7 +273,7 @@ QFrame {
          <widget class="QCheckBox" name="CreateDesktopLink_CheckBox">
           <property name="font">
            <font>
-            <family>有爱魔兽圆体 CN Medium</family>
+            <family>微软雅黑</family>
             <pointsize>9</pointsize>
            </font>
           </property>
@@ -283,72 +287,114 @@ QFrame {
         </item>
        </layout>
       </widget>
+      <widget class="QFrame" name="Progress_Frame">
+       <property name="geometry">
+        <rect>
+         <x>-10</x>
+         <y>-10</y>
+         <width>731</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>微软雅黑</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="Progress_Label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>10</y>
+          <width>81</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>正在安装中</string>
+        </property>
+       </widget>
+       <widget class="QProgressBar" name="Progress_ProgressBox">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>681</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+         </font>
+        </property>
+        <property name="mouseTracking">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QProgressBar {
+    min-height: 20px;
+    max-height: 20px;
+    border-radius: 5px;
+	border: 2px solid rgb(57, 59, 64);
+	text-align: center;
+	background-color: rgba(255, 255, 255 ,0);
+}
+QProgressBar:chunk {
+    border-radius: 3px;
+    background-color: rgb(57, 59, 64);
+    margin: 2px;
+}
+
+</string>
+        </property>
+        <property name="value">
+         <number>24</number>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="StartLauncher_CheckBox">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>80</y>
+          <width>112</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>微软雅黑</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>打开原神启动器Ex</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
      </widget>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>660</x>
-       <y>0</y>
-       <width>71</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="Top_Right_Layout">
-      <property name="spacing">
-       <number>10</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>5</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="Min_Bottom">
-        <property name="styleSheet">
-         <string notr="true">QPushButton:hover {
-	background-color: rgba(255, 255, 255 ,95);
-}</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="src/Installer/styple.qrc">
-          <normaloff>:/ico/min.png</normaloff>:/ico/min.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="Close_Buttom">
-        <property name="styleSheet">
-         <string notr="true">QPushButton:hover {
-	background-color: rgba(255, 0, 0 ,95);
-}</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="src/Installer/styple.qrc">
-          <normaloff>:/ico/close.png</normaloff>:/ico/close.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </widget>
     <widget class="QPushButton" name="InstallerEnd_Button">
      <property name="geometry">
@@ -361,7 +407,7 @@ QFrame {
      </property>
      <property name="font">
       <font>
-       <family>有爱魔兽圆体 CN Medium</family>
+       <family>微软雅黑</family>
        <pointsize>11</pointsize>
        <weight>50</weight>
        <bold>false</bold>
@@ -388,13 +434,93 @@ QPushButton:pressed {
       <bool>false</bool>
      </property>
     </widget>
+    <widget class="QFrame" name="Top_Right_Frame">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>0</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>71</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="Top_Right_Layout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="Min_Bottom">
+         <property name="styleSheet">
+          <string notr="true">QPushButton:hover {
+	background-color: rgba(255, 255, 255 ,95);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="src/Installer/styple.qrc">
+           <normaloff>:/ico/min.png</normaloff>:/ico/min.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Close_Buttom">
+         <property name="styleSheet">
+          <string notr="true">QPushButton:hover {
+	background-color: rgba(255, 0, 0 ,95);
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="src/Installer/styple.qrc">
+           <normaloff>:/ico/close.png</normaloff>:/ico/close.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
     <zorder>Fontground_Label</zorder>
     <zorder>Title_Lable</zorder>
-    <zorder>Top_Right_Frame</zorder>
     <zorder>Bottom_Installer_Frame</zorder>
-    <zorder>layoutWidget</zorder>
     <zorder>InstallerStart_Button</zorder>
     <zorder>InstallerEnd_Button</zorder>
+    <zorder>Top_Right_Frame</zorder>
    </widget>
   </widget>
  </widget>
@@ -406,15 +532,15 @@ QPushButton:pressed {
    <sender>Min_Bottom</sender>
    <signal>clicked()</signal>
    <receiver>installer</receiver>
-   <slot>showMinimized()</slot>
+   <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>700</x>
-     <y>34</y>
+     <x>698</x>
+     <y>22</y>
     </hint>
     <hint type="destinationlabel">
-     <x>657</x>
-     <y>14</y>
+     <x>693</x>
+     <y>3</y>
     </hint>
    </hints>
   </connection>
@@ -425,33 +551,14 @@ QPushButton:pressed {
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>745</x>
-     <y>34</y>
+     <x>726</x>
+     <y>28</y>
     </hint>
     <hint type="destinationlabel">
-     <x>698</x>
-     <y>13</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>InstallerEnd_Button</sender>
-   <signal>clicked()</signal>
-   <receiver>installer</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>384</x>
-     <y>278</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>384</x>
-     <y>488</y>
+     <x>733</x>
+     <y>6</y>
     </hint>
    </hints>
   </connection>
  </connections>
- <slots>
-  <slot>setup(path)</slot>
- </slots>
 </ui>

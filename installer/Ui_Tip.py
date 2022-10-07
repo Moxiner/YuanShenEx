@@ -12,10 +12,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_tip(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(402, 267)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+    def setupUi(self, tip):
+        tip.setObjectName("tip")
+        tip.resize(402, 269)
+        self.centralwidget = QtWidgets.QWidget(tip)
         self.centralwidget.setObjectName("centralwidget")
         self.widget = QtWidgets.QWidget(self.centralwidget)
         self.widget.setGeometry(QtCore.QRect(10, 10, 380, 250))
@@ -37,7 +37,7 @@ class Ui_tip(object):
         self.Title_Label.setAlignment(QtCore.Qt.AlignCenter)
         self.Title_Label.setObjectName("Title_Label")
         self.Content_Label = QtWidgets.QLabel(self.widget)
-        self.Content_Label.setGeometry(QtCore.QRect(0, 80, 380, 101))
+        self.Content_Label.setGeometry(QtCore.QRect(20, 70, 341, 101))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setPointSize(10)
@@ -52,28 +52,26 @@ class Ui_tip(object):
         font.setPointSize(10)
         self.OK_Button.setFont(font)
         self.OK_Button.setStyleSheet("QPushButton:pressed {        \n"
-                                     "    background-color: rgb(34, 35, 38);\n"
-                                     "}\n"
-                                     "QPushButton {\n"
-                                     "    border:none;\n"
-                                     "    border-radius:5px;\n"
-                                     "    \n"
-                                     "    color: rgb(244, 216, 135);\n"
-                                     "    background-color: rgb(57, 59, 64);\n"
-                                     "}")
+"    background-color: rgb(34, 35, 38);\n"
+"}\n"
+"QPushButton {\n"
+"    border:none;\n"
+"    border-radius:5px;\n"
+"    \n"
+"    color: rgb(244, 216, 135);\n"
+"    background-color: rgb(57, 59, 64);\n"
+"}")
         self.OK_Button.setObjectName("OK_Button")
-        MainWindow.setCentralWidget(self.centralwidget)
+        tip.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        self.OK_Button.clicked.connect(MainWindow.close)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(tip)
+        self.OK_Button.clicked.connect(tip.close)
+        QtCore.QMetaObject.connectSlotsByName(tip)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, tip):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.Title_Label.setText(_translate("MainWindow", "Title"))
-        self.Content_Label.setText(_translate("MainWindow", "content"))
-        self.OK_Button.setText(_translate("MainWindow", "确认"))
-
-
+        tip.setWindowTitle(_translate("tip", "MainWindow"))
+        self.Title_Label.setText(_translate("tip", "Title"))
+        self.Content_Label.setText(_translate("tip", "content"))
+        self.OK_Button.setText(_translate("tip", "确认"))
 import Tip_rc
