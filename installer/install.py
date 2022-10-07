@@ -16,11 +16,13 @@ from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER
 from win32ui import CreateFileDialog
 from win32api import MessageBox
 from win32con import MB_OK
+from wget import download
 from Ui_Installer import Ui_installer
 from Ui_Tip import Ui_tip
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui
-import sys
+from sys import argv, exit
+from threading import Thread
 
 
 def get_desktop():
@@ -53,6 +55,7 @@ class TipWindow(QMainWindow):
 class InstallerWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.install_thread = Thread(target=self.installer_thread)
         self.m_flag = False
         self.ui = Ui_installer()
         self.ui.setupUi(self)
@@ -60,6 +63,8 @@ class InstallerWindow(QMainWindow):
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.m_Position = None
+        self.fileName = ""
+        self.ui.Path_LineEdit.setReadOnly(True)  # 无法选中
         self.ui.InstallerStart_Button.clicked.connect(self.installer)  # 绑定 InstallerStart_Button 点击事件
         self.ui.Look_Button.clicked.connect(self.choice_file)  # 绑定 Look_Button 点击事件
         self.show()
@@ -100,21 +105,27 @@ class InstallerWindow(QMainWindow):
 
     def installer(self):
         # 安装点击事件
-        fileName = self.ui.Path_LineEdit.text()  # 读取 Path_LineEdit 数据
-        if len(fileName) == 0:
+        self.fileName = self.ui.Path_LineEdit.text()  # 读取 Path_LineEdit 数据
+        if len(self.fileName) == 0:
             tip.Message_Shoe("错误", "请先选择游戏路径")
             return
+        self.install_thread.start()
+        self.install_thread.join()
 
-        # 添加YuanSenEx.ini文件
+    def installer_thread(self):
+        self.ui.InstallerStart_Button.setEnabled(False)  # 无法使用
+        self.ui.Bottom_Installer_Frame.setEnabled(False)  # 无法使用
+
         self.ui.InstallerStart_Button.setVisible(False)
         self.ui.Bottom_Installer_Frame.setVisible(False)
 
-        file = open(fileName + "\\YuanSenEx.ini", 'w', encoding="UTF-8")
+        # 添加YuanSenEx.ini文件
+        file = open(self.fileName + "\\YuanSenEx.ini", 'w', encoding="UTF-8")
         file.write("[url]\n[public]\n[GuanFu]\n[BFu]")
         file.close()
         config_YunShenEx = ConfigParser()
-        config_YunShenEx.read(fileName + "\\YuanSenEx.ini", encoding="UTF-8")
-        config_YunShenEx.set("url", "Path", fileName)
+        config_YunShenEx.read(self.fileName + "\\YuanSenEx.ini", encoding="UTF-8")
+        config_YunShenEx.set("url", "Path", self.fileName)
         config_YunShenEx.set("public", "game_version", "3.1.0")
         config_YunShenEx.set("public", "plugin_sdk_version", "3.5.0")
         config_YunShenEx.set("GuanFu", "channel", "1")
@@ -123,59 +134,67 @@ class InstallerWindow(QMainWindow):
         config_YunShenEx.set("BFu", "channel", "14")
         config_YunShenEx.set("BFu", "cps", "bilibili")
         config_YunShenEx.set("BFu", "sub_channel", "0")
-        config_YunShenEx.write(open(fileName + "\\YuanSenEx.ini", "w", encoding="UTF-8"))
+        config_YunShenEx.write(open(self.fileName + "\\YuanSenEx.ini", "w", encoding="UTF-8"))
 
         # 复制PCGameSDK.dll文件
         try:
-            copyfile("src\\PCGameSDK.dll", fileName + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
+            copyfile("src\\PCGameSDK.dll", self.fileName + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/PCGameSDK.dll",
+                     self.fileName + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
 
         # 判断并创建src目录
-        if not path.exists(fileName + "\\src"):
-            makedirs(fileName + "\\src")
+        if not path.exists(self.fileName + "\\src"):
+            makedirs(self.fileName + "\\src")
 
         # 复制ico.ico文件
         try:
-            copyfile("src\\ico.ico", fileName + "\\src\\ico.ico")
+            copyfile("src\\ico.ico", self.fileName + "\\src\\ico.ico")
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/ico.ico",
+                     self.fileName + "\\src\\ico.ico")
 
         # 复制background.png
         try:
-            copyfile("src\\background.png", fileName + "\\src\\background.png")
+            copyfile("src\\background.png", self.fileName + "\\src\\background.png")
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/background.png",
+                     self.fileName + "\\src\\background.png")
 
         # 如果ini不存在则创建
-        if not path.exists(fileName + "\\config.ini"):
-            file = open(fileName + "\\config.ini", 'w', encoding="UTF-8")
+        if not path.exists(self.fileName + "\\config.ini"):
+            file = open(self.fileName + "\\config.ini", 'w', encoding="UTF-8")
             file.write("[General]")
             file.close()
 
         # 从YuanSenEx.ini读取数据写入config.ini文件
         config_config = ConfigParser()
-        config_config.read(fileName + "\\config.ini", encoding="UTF-8")
+        config_config.read(self.fileName + "\\config.ini", encoding="UTF-8")
         config_config.set("General", "channel", config_YunShenEx.get("GuanFu", "channel"))
         config_config.set("General", "cps", config_YunShenEx.get("GuanFu", "cps"))
         config_config.set("General", "game_version", config_YunShenEx.get("public", "game_version"))
         config_config.set("General", "sub_channel", config_YunShenEx.get("GuanFu", "sub_channel"))
         config_config.set("General", "plugin_sdk_version", config_YunShenEx.get("public", "plugin_sdk_version"))
-        config_config.write(open(fileName + "\\config.ini", "w", encoding="UTF-8"))
+        config_config.write(open(self.fileName + "\\config.ini", "w", encoding="UTF-8"))
 
         # 复制Launcher.exe启动器
         try:
-            copyfile("src\\Launcher.exe", fileName + "\\Launcher.exe")
+            copyfile("src\\Launcher.exe", self.fileName + "\\Launcher.exe")
         except Exception as result:
             # 打印错误信息
             print(result)
+            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/Launcher.exe",
+                     self.fileName + "\\Launcher.exe")
 
         # 创建桌面快捷方式
         if self.ui.CreateStartedLink_CheckBox.isChecked():
-            symlink(fileName + "\\Launcher.exe", get_desktop() + "\\原神双服启动器")
+            symlink(self.fileName + "\\Launcher.exe", get_desktop() + "\\原神双服启动器")
         # 创建开始菜单快捷方式
         if self.ui.CreateDesktopLink_CheckBox.isChecked():
             pass
@@ -187,7 +206,7 @@ class InstallerWindow(QMainWindow):
 # 创建对象，调用创建主窗口方法，进去消息循环
 if __name__ == '__main__':
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
-    app = QApplication(sys.argv)
+    app = QApplication(argv)
     win = InstallerWindow()
     tip = TipWindow()
-    sys.exit(app.exec_())
+    exit(app.exec_())

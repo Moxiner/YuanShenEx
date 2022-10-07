@@ -52,15 +52,15 @@ class Ui_tip(object):
         font.setPointSize(10)
         self.OK_Button.setFont(font)
         self.OK_Button.setStyleSheet("QPushButton:pressed {        \n"
-"    background-color: rgb(34, 35, 38);\n"
-"}\n"
-"QPushButton {\n"
-"    border:none;\n"
-"    border-radius:5px;\n"
-"    \n"
-"    color: rgb(244, 216, 135);\n"
-"    background-color: rgb(57, 59, 64);\n"
-"}")
+                                     "    background-color: rgb(34, 35, 38);\n"
+                                     "}\n"
+                                     "QPushButton {\n"
+                                     "    border:none;\n"
+                                     "    border-radius:5px;\n"
+                                     "    \n"
+                                     "    color: rgb(244, 216, 135);\n"
+                                     "    background-color: rgb(57, 59, 64);\n"
+                                     "}")
         self.OK_Button.setObjectName("OK_Button")
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -74,4 +74,6 @@ class Ui_tip(object):
         self.Title_Label.setText(_translate("MainWindow", "Title"))
         self.Content_Label.setText(_translate("MainWindow", "content"))
         self.OK_Button.setText(_translate("MainWindow", "确认"))
+
+
 import Tip_rc
