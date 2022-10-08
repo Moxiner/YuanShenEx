@@ -5,10 +5,11 @@
 
 
 from configparser import ConfigParser
+from doctest import Example
 from os import makedirs, path
 from pathlib import Path
 from shutil import copyfile
-from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE
+from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER
 from win32ui import CreateFileDialog
 from win32api import ShellExecute
 from winshell import shortcut
@@ -21,6 +22,8 @@ from PyQt5 import QtCore, QtGui
 from sys import argv, exit
 from threading import Thread
 
+
+VERSION = "1.0.0"
 
 def get_desktop():
     key = OpenKey(HKEY_CURRENT_USER,
@@ -70,6 +73,7 @@ class InstallerWindow(QMainWindow):
         self.m_flag = False
         self.ui = Ui_installer()
         self.ui.setupUi(self)
+        self.ui.Title_Lable.setText("原神启动Ex安装程序 v" + VERSION )
         self.hide()
         self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
@@ -85,13 +89,13 @@ class InstallerWindow(QMainWindow):
 
     def hide(self):
         # 隐藏部件
-        self.ui.InstallerEnd_Button.clicked.connect(self.closeAndOpenLauncher)
         self.ui.InstallerEnd_Button.setEnabled(False)
         self.ui.InstallerEnd_Button.setHidden(True)
         self.ui.Progress_Frame.setHidden(True)
 
     def closeAndOpenLauncher(self):
         '''是否启动 Launcher 并关闭 Installer'''
+        self.ui.InstallerEnd_Button.setEnabled(False)
         if self.ui.StartLauncher_CheckBox.isChecked():
             ShellExecute(0, 'open', self.fileName +
                          "\\Launcher.exe", '', self.fileName, 1)
@@ -136,7 +140,7 @@ class InstallerWindow(QMainWindow):
         self.ui.Installer_Label.setEnabled(True)  # 无法使用
         self.ui.InstallerStart_Button.setEnabled(False)  # 无法使用
         self.ui.InstallerStart_Button.setHidden(True)
-        self.ui.InstallerEnd_Button.setEnabled(False)
+        self.ui.InstallerEnd_Button.setVisible(False)
         self.ui.Top_Right_Frame.setEnabled(False)
         self.ui.Top_Right_Frame.setHidden(True)
         self.ui.Bottom_Installer_Frame.resize(730, 80)
@@ -196,11 +200,12 @@ class InstallerWindow(QMainWindow):
         self.install_thread.start()
         self.install_thread.join()
         self.ui.Bottom_Installer_Frame.resize(730, 110)
-        self.ui.InstallerEnd_Button.setHidden(False)
-        self.ui.InstallerEnd_Button.setEnabled(True)
+        self.ui.InstallerEnd_Button.setVisible(True)
         self.ui.InstallerEnd_Button.setEnabled(True)
         self.ui.Top_Right_Frame.setEnabled(True)
         self.ui.Top_Right_Frame.setHidden(False)
+
+        
 
         # 创建桌面快捷方式
         if self.ui.CreateStartedLink_CheckBox.isChecked():
@@ -249,6 +254,8 @@ class InstallerWindow(QMainWindow):
                      self.fileName + "\\Launcher.exe")
         self.ui.Progress_ProgressBox.setValue(100)
         self.ui.Progress_Label.setText("安装完成")
+        self.ui.InstallerEnd_Button.clicked.connect(self.closeAndOpenLauncher)
+
 
 
 # 创建对象，调用创建主窗口方法，进去消息循环

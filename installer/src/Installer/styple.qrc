@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="ico">
+    <file>ico.ico</file>
     <file>close.png</file>
     <file>min.png</file>
     <file>set2.png</file>

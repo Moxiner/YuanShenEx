@@ -19,7 +19,11 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>原神启动器Ex安装程序</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="styple.qrc">
+    <normaloff>:/ico/ico.ico</normaloff>:/ico/ico.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="Main_Widget" native="true">
