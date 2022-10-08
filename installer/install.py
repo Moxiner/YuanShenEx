@@ -136,6 +136,9 @@ class InstallerWindow(QMainWindow):
         self.ui.Installer_Label.setEnabled(True)  # 无法使用
         self.ui.InstallerStart_Button.setEnabled(False)  # 无法使用
         self.ui.InstallerStart_Button.setHidden(True)
+        self.ui.InstallerEnd_Button.setEnabled(False)
+        self.ui.Top_Right_Frame.setEnabled(False)
+        self.ui.Top_Right_Frame.setHidden(True)
         self.ui.Bottom_Installer_Frame.resize(730, 80)
         self.ui.Progress_ProgressBox.setTextVisible(False)
         self.ui.Progress_ProgressBox.setValue(0)
@@ -193,9 +196,11 @@ class InstallerWindow(QMainWindow):
         self.install_thread.start()
         self.install_thread.join()
         self.ui.Bottom_Installer_Frame.resize(730, 110)
-        self.ui.InstallerStart_Button.setEnabled(False)
         self.ui.InstallerEnd_Button.setHidden(False)
         self.ui.InstallerEnd_Button.setEnabled(True)
+        self.ui.InstallerEnd_Button.setEnabled(True)
+        self.ui.Top_Right_Frame.setEnabled(True)
+        self.ui.Top_Right_Frame.setHidden(False)
 
         # 创建桌面快捷方式
         if self.ui.CreateStartedLink_CheckBox.isChecked():
