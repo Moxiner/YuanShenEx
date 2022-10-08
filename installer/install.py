@@ -136,7 +136,7 @@ class InstallerWindow(QMainWindow):
         self.ui.Installer_Label.setEnabled(True)  # 无法使用
         self.ui.InstallerStart_Button.setEnabled(False)  # 无法使用
         self.ui.InstallerStart_Button.setHidden(True)
-        self.ui.Bottom_Installer_Frame.resize(730, 110)
+        self.ui.Bottom_Installer_Frame.resize(730, 80)
         self.ui.Progress_ProgressBox.setTextVisible(False)
         self.ui.Progress_ProgressBox.setValue(0)
         self.ui.Progress_Frame.setHidden(False)
@@ -192,7 +192,7 @@ class InstallerWindow(QMainWindow):
 
         self.install_thread.start()
         self.install_thread.join()
-
+        self.ui.Bottom_Installer_Frame.resize(730, 110)
         self.ui.InstallerStart_Button.setEnabled(False)
         self.ui.InstallerEnd_Button.setHidden(False)
         self.ui.InstallerEnd_Button.setEnabled(True)
