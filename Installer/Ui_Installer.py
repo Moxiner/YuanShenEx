@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\Installer.ui'
+# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\src\Installer\Installer.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -19,6 +19,9 @@ class Ui_installer(object):
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         installer.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/ico/ico.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        installer.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(installer)
         self.centralwidget.setObjectName("centralwidget")
         self.Main_Widget = QtWidgets.QWidget(self.centralwidget)
@@ -238,9 +241,9 @@ class Ui_installer(object):
 "    background-color: rgba(255, 255, 255 ,95);\n"
 "}")
         self.Min_Bottom.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/ico/min.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.Min_Bottom.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/ico/min.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.Min_Bottom.setIcon(icon1)
         self.Min_Bottom.setIconSize(QtCore.QSize(20, 20))
         self.Min_Bottom.setObjectName("Min_Bottom")
         self.Top_Right_Layout.addWidget(self.Min_Bottom)
@@ -249,9 +252,9 @@ class Ui_installer(object):
 "    background-color: rgba(255, 0, 0 ,95);\n"
 "}")
         self.Close_Buttom.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/ico/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.Close_Buttom.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/ico/close.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.Close_Buttom.setIcon(icon2)
         self.Close_Buttom.setIconSize(QtCore.QSize(20, 20))
         self.Close_Buttom.setObjectName("Close_Buttom")
         self.Top_Right_Layout.addWidget(self.Close_Buttom)
@@ -264,16 +267,16 @@ class Ui_installer(object):
         installer.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(installer)
-        self.Min_Bottom.clicked.connect(installer.close)
+        self.Min_Bottom.clicked.connect(installer.showMinimized)
         self.Close_Buttom.clicked.connect(installer.close)
         QtCore.QMetaObject.connectSlotsByName(installer)
 
     def retranslateUi(self, installer):
         _translate = QtCore.QCoreApplication.translate
-        installer.setWindowTitle(_translate("installer", "MainWindow"))
+        installer.setWindowTitle(_translate("installer", "原神启动器Ex安装程序"))
         self.Title_Lable.setText(_translate("installer", "原神启动器EX安装程序"))
         self.InstallerStart_Button.setText(_translate("installer", "立即安装"))
-        self.Look_Button.setText(_translate("installer", "选择文件位置"))
+        self.Look_Button.setText(_translate("installer", "定位游戏"))
         self.Installer_Label.setText(_translate("installer", "安装位置"))
         self.CreateStartedLink_CheckBox.setText(_translate("installer", "创建桌面快捷方式"))
         self.CreateDesktopLink_CheckBox.setText(_translate("installer", "创建开始快捷方式"))

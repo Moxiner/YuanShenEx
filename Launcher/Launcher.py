@@ -1,16 +1,16 @@
-from cgitb import text
-from copy import copy
 from shutil import copyfile
 from PIL import Image, ImageTk
 from tkinter import END, messagebox, font
 import tkinter as tk
 from PIL import Image, ImageTk
+import traceback
 import os
+from win32api import ShellExecute
 import configparser
 from Downloard_src import download
 
-VERSION = "1.1.0-Pre"
-AUTHOR = "Moxiner"
+VERSION = "1.1.1"
+AUTHOR = "Moxiner And Morbid"
 url_bg = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/background.png"
 url_ico = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/ico.ico"
 url_PCGameSDK = "https://wwu.lanzouy.com/iQE6V0cvyd2d"
@@ -22,12 +22,15 @@ def readConfig():
     try:
         global NOTE
         global VERSION
+        global GamePath
         config = configparser.ConfigParser()
-        config.read("Config.ini")
+        config.read("YuanShenEx.ini")
+        GamePath = config.get("url" , "gamepath") 
+        config.read(GamePath + "/config.ini")
         GAME_VERSON = config.get("General", "game_version")
         NOTE = f"欢迎使用原神启动器EX    游戏版本 {GAME_VERSON}    作者 {AUTHOR}"
     except:
-        messagebox.showerror(title="找不到配置文件", message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini")
+        messagebox.showerror(title="报错", message=traceback.print_exc())
         NOTE = "读取配置文件失败 , 未找到游戏文件"
 
 
@@ -36,17 +39,20 @@ def mihoyo():
     try:
         global NOTE
         config = configparser.ConfigParser()
-        config.read("Config.ini")
+
+        config.read(GamePath + "/config.ini")
         config.set("General", "channel", "1")
         config.set("General", "cps", "mihoyo")
         config.set("General", "sub_channel", "1")
-        config.write(open("Config.ini", "w"))
+        config.write(open(GamePath + "/config.ini", "w"))
         try:
-            os.system("start yuanshen.exe")
-        except:
-            messagebox.showerror(title="找不到配置文件", message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+            ShellExecute(0, 'open', GamePath  + "/YuanShen.exe" , '' ,GamePath , 1)
+        except Exception:
+            err = traceback.print_exc()
+            messagebox.showerror(title="启动失败", message= err)
     except:
-        messagebox.showerror(title="找不到配置文件", message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini 文件")
+        err = traceback.print_exc()
+        messagebox.showerror(title="启动失败", message=err)
 
 
 def bilibili():
@@ -54,29 +60,34 @@ def bilibili():
     try:
         global NOTE
         config = configparser.ConfigParser()
-        config.read("Config.ini")
+        config.read(GamePath + "/config.ini")
         config.set("General", "channel", "14")
         config.set("General", "cps", "bilibili")
         config.set("General", "sub_channel", "0")
-        config.write(open("Config.ini", "w"))
+        config.write(open(GamePath + "/config.ini", "w"))
         try:
-            os.system("start yuanshen.exe")
+            ShellExecute(0, 'open', GamePath + "/YuanShen.exe"  , '', GamePath, 1)
         except:
-            messagebox.showerror(title="找不到配置文件", message="找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 yuanshen.exe 文件")
+            messagebox.showerror(title="启动失败", message=traceback.print_exc())
     except:
-        messagebox.showerror(title="找不到配置文件", message="找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 Config.ini 文件")
+        messagebox.showerror(title="启动失败", message=traceback.print_exc())
 
 
 def fixbug():
     '''一键修复'''
     try:
-        copyfile("src/PCGameSDK.dll", "YuanShen_Data/Plugins")
-        copyfile("src/config.ini", "config.ini")
+        copyfile("src/PCGameSDK.dll", GamePath + "/YuanShen_Data/Plugins/PCGameSDK.dll")
+        copyfile("src/config.ini", GamePath + "/config.ini")
         messagebox.showinfo(title="修复完成", message="修复完成，请选择启动服务器")
     except FileNotFoundError:
         download(url_PCGameSDK, "src/PCGameSDK.dll")
         download(url_config, "src/config.ini")
-        messagebox.showerror(title="提示", message="修复完成，请选择启动服务器")
+        copyfile("src/PCGameSDK.dll", GamePath + "/YuanShen_Data/Plugins/PCGameSDK.dll")
+        copyfile("src/config.ini", GamePath + "/config.ini")
+        messagebox.showinfo(title="提示", message="修复完成，请选择启动服务器")
+    except Exception as result:
+        err = traceback.print_exc()
+        messagebox.showinfo(title="提示", message=err)
 
 def main():
     '''主函数'''
@@ -87,8 +98,9 @@ def main():
     Window.title(f"原神启动器 {VERSION}")
     try:
         Window.iconbitmap("./src/ico.ico")
-    except:
-        messagebox.showerror(title="缺少文件", message="缺少资源文件 src\\ico.ico \n请重新解压压缩包内所有文件！")
+    except Exception as e:
+        err = traceback.print_exc()
+        messagebox.showerror(title="报错", message=err)
     canvas = tk.Canvas(Window, width=1280, height=720, bd=0, highlightthickness=0)
     Window_frame1 = tk.Frame(canvas)
     Window_frame2 = tk.Frame(canvas)
@@ -130,8 +142,9 @@ def main():
 
 
 if __name__ == "__main__":
-    # try:
+    try:
         readConfig()
         main()
-    # except Exception as Error:
-    #     messagebox.showerror(title="致命错误", message=str(Error))
+    except Exception as e:
+        err = traceback.print_exc()
+        messagebox.showerror(title="致命错误", message=str(err))
