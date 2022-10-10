@@ -70,15 +70,13 @@ def bilibili():
 def fixbug():
     '''一键修复'''
     try:
-        copyfile("../installer/src/PCGameSDK.dll", "YuanShen_Data/Plugins/PCGameSDK.dll")
-        copyfile("installer/src/config.ini", "config.ini")
+        copyfile("src/PCGameSDK.dll", "YuanShen_Data/Plugins")
+        copyfile("src/config.ini", "config.ini")
         messagebox.showinfo(title="修复完成", message="修复完成，请选择启动服务器")
     except FileNotFoundError:
-        download(url_PCGameSDK, "../installer/src/PCGameSDK.dll")
-        copyfile("../installer/src/PCGameSDK.dll", "YuanShen_Data/Plugins/PCGameSDK.dll")
-        download(url_config, "installer/src/config.ini")
-        copyfile("installer/src/config.ini", "config.ini")
-
+        download(url_PCGameSDK, "src/PCGameSDK.dll")
+        download(url_config, "src/config.ini")
+        messagebox.showerror(title="提示", message="修复完成，请选择启动服务器")
 
 def main():
     '''主函数'''
@@ -97,12 +95,14 @@ def main():
 
     # 加载背景图片
     try:
-        bg_load = Image.open("../installer/src/background.png")
+        bg_load = Image.open("src/background.png")
         bg_img = ImageTk.PhotoImage(bg_load)
     except:
         # messagebox.showerror(title="缺少文件" , message="缺少资源文件 src\\background.png \n请重新解压压缩包内所有文件！")
-        download(url_bg, "../installer/src/background.png")
-        download(url_ico, "../installer/src/background.png")
+        download(url_bg, "src/background.png")
+        download(url_ico, "src/background.png")
+        bg_load = Image.open("src/background.png")
+        bg_img = ImageTk.PhotoImage(bg_load)
     canvas.create_image(640, 360, image=bg_img)
     # 绘制控件
     mihoyo_button = tk.Button(Window_frame1, text="启动官服", width=23, command=mihoyo, height=40, background="#FFCB20",
@@ -130,8 +130,8 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
+    # try:
         readConfig()
         main()
-    except Exception as Error:
-        messagebox.showerror(title="致命错误", message=str(Error))
+    # except Exception as Error:
+    #     messagebox.showerror(title="致命错误", message=str(Error))
