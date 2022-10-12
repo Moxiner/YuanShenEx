@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="background">
+    <file>setting.png</file>
+    <file>background.png</file>
+  </qresource>
+  <qresource prefix="ico">
+    <file>setting.png</file>
+    <file>ico.ico</file>
+    <file>drop.png</file>
+    <file>close.png</file>
+    <file>min.png</file>
+    <file>set1.png</file>
+    <file>set2.png</file>
+    <file>app.png</file>
+  </qresource>
+</RCC>
