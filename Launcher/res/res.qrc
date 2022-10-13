@@ -9,6 +9,7 @@
     <file>Genshin_auto_play.png</file>
   </qresource>
   <qresource prefix="ico">
+    <file>fixed.png</file>
     <file>setting.png</file>
     <file>ico.ico</file>
     <file>drop.png</file>
