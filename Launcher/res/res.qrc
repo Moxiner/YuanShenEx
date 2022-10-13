@@ -1,7 +1,12 @@
 <RCC>
   <qresource prefix="background">
+    <file>Tip.png</file>
     <file>setting.png</file>
     <file>background.png</file>
+  </qresource>
+  <qresource prefix="app_icon">
+    <file>Map.ico</file>
+    <file>Genshin_auto_play.png</file>
   </qresource>
   <qresource prefix="ico">
     <file>setting.png</file>
