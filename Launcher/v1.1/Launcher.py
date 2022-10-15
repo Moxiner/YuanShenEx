@@ -1,11 +1,9 @@
-from msilib.schema import Error
 from shutil import copyfile
 import traceback
 from PIL import Image, ImageTk
-from tkinter import END, messagebox, font
+from tkinter import messagebox
 import tkinter as tk
 from PIL import Image, ImageTk
-import os
 from win32api import ShellExecute
 import configparser
 from Downloard_src import download
@@ -25,7 +23,7 @@ def ErrorMessage(Error = "未知错误，请联系开发者！"):
 ==========================================
 {Error}
 ==========================================
-报错代码  请将此代码截图至
+报错代码 
 ==========================================
 {traceback.format_exc()}       
 '''
@@ -39,9 +37,9 @@ def readConfig():
         global VERSION
         global GamePath
         config = configparser.ConfigParser()
-        config.read("YuanShenEx.ini")
+        config.read("YuanShenEx.ini", encoding="utf8")
         GamePath = config.get("url" , "gamepath") 
-        config.read(GamePath + "/config.ini")
+        config.read(GamePath + "/config.ini", encoding="utf8")
         GAME_VERSON = config.get("General", "game_version")
         NOTE = f"欢迎使用原神启动器EX    游戏版本 {GAME_VERSON}    作者 {AUTHOR}"
     except:
@@ -55,7 +53,7 @@ def mihoyo():
         global NOTE
         config = configparser.ConfigParser()
 
-        config.read(GamePath + "/config.ini")
+        config.read(GamePath + "/config.ini" , encoding="utf8")
         config.set("General", "channel", "1")
         config.set("General", "cps", "mihoyo")
         config.set("General", "sub_channel", "1")
@@ -73,7 +71,7 @@ def bilibili():
     try:
         global NOTE
         config = configparser.ConfigParser()
-        config.read(GamePath + "/config.ini")
+        config.read(GamePath + "/config.ini", encoding="utf8")
         config.set("General", "channel", "14")
         config.set("General", "cps", "bilibili")
         config.set("General", "sub_channel", "0")
@@ -111,7 +109,7 @@ def main():
     Window = tk.Tk()
     Window.title(f"原神启动器 {VERSION}")
     try:
-        Window.iconbitmap("res/ico.ico")
+        Window.iconbitmap("src/ico.ico")
     except:
        Error.append("\n缺少资源文件 src\\ico.ico \n请重新解压压缩包内所有文件！") 
     canvas = tk.Canvas(Window, width=1280, height=720, bd=0, highlightthickness=0)
@@ -120,13 +118,13 @@ def main():
 
     # 加载背景图片
     try:
-        bg_load = Image.open("res/background.png")
+        bg_load = Image.open("src/background.png")
         bg_img = ImageTk.PhotoImage(bg_load)
     except:
         Error.append("\n缺少资源文件 src\\background.png \n请重新解压压缩包内所有文件！")
-        download(url_bg, "res/background.png")
-        download(url_ico, "res/background.png")
-    bg_load = Image.open("res/background.png")
+        download(url_bg, "src/background.png")
+        download(url_ico, "src/background.png")
+    bg_load = Image.open("src/background.png")
     bg_img = ImageTk.PhotoImage(bg_load)
     canvas.create_image(640, 360, image = bg_img)
     # 绘制控件
