@@ -34,6 +34,8 @@
 * 请 👉[点击此处](https://github.com/Moxiner/YuanShenEx_Launcher/releases)👈 下载压缩包
 ### 【Step 2】解压压缩包
 * 点击Installer （如果有Bug，请先解压至桌面）
+
+
 ![原神Ex安装方法](https://github.com/Moxiner/YuanShenEx/blob/main/docs/%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95.gif)
 
 ```
