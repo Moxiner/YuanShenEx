@@ -35,6 +35,7 @@
 ### 【Step 2】解压压缩包
 * 点击Installer （如果有Bug，请先解压至桌面）
 
+![安装方法](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95.gif)
 ```
 一般 
 原版启动器的文件夹名为 Genshin Impact 
@@ -64,7 +65,7 @@
   * A：理论上，原神启动器EX 和 原版启动器启动速度持平，如果启动速度慢绝对不是因为原神启动器EX的原因 （除非给出证据）
 * Q：启动B服出现解析二级地址错误
   * A：请下载 [PCGameSDK.dll](https://wwu.lanzouy.com/iQE6V0cvyd2d) 并替换到 Genshin Impact Game/YuanShen_Data/Plugins文件夹里面，即可正常进行B服！
-* Q：游戏出现以下报错：
+* Q：游戏出现  ```数据异常，请完全卸载游戏,并从官方渠道重新下载安装错误码:31-4302```怎么办？
   * A：请删除 Genshin Impact Game 中的多余文件 （如 src / Launcher.exe /Installer.exe
 * Q：游戏出现  ```未知错误```怎么办？
   * A：请提交至 👉[Gitte Issues](https://gitee.com/Morbid-zj/yuanShenEx/issues)👈 \ 或 [QQ群](👉https://jq.qq.com/?_wv=1027&k=1rvEyeSA👈)
