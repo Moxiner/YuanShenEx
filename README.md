@@ -44,7 +44,7 @@
 
 例如： G:\Genshin Impact\Genshin Impact Game
 ```
-* 将压缩包内所有文件解压（覆盖）到游戏根目录
+## 不要将压缩包内任何文件解压到游戏根目录
 
 #### 游戏根目录示例截图
 ![目录截图示例](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E7%9B%AE%E5%BD%95%E5%B1%95%E7%A4%BA.png)
