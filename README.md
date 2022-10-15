@@ -33,7 +33,8 @@
 ### 【Step 1】下载启动器压缩包
 * 请 👉[点击此处](https://github.com/Moxiner/YuanShenEx_Launcher/releases)👈 下载压缩包
 ### 【Step 2】解压压缩包
-* 请找到在您电脑上的游戏资源目录 （
+* 点击Installer （如果有Bug，请先解压至桌面）
+
 ```
 一般 
 原版启动器的文件夹名为 Genshin Impact 
@@ -52,13 +53,6 @@
 * 同意安全权限
 * 等待游戏启动
 ## 🕹 高阶技巧
-### 【Step X】创建桌面快捷方式
-* 右键 Launcher.exe
-* 选择 发送到
-* 单击 桌面快捷方式
-
-![右键创建桌面快捷方式示例](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E5%8F%B3%E9%94%AE.png)
-
 
 
 ## ✨ FQA
@@ -70,7 +64,12 @@
   * A：理论上，原神启动器EX 和 原版启动器启动速度持平，如果启动速度慢绝对不是因为原神启动器EX的原因 （除非给出证据）
 * Q：启动B服出现解析二级地址错误
   * A：请下载 [PCGameSDK.dll](https://wwu.lanzouy.com/iQE6V0cvyd2d) 并替换到 Genshin Impact Game/YuanShen_Data/Plugins文件夹里面，即可正常进行B服！
- 
+* Q：游戏出现以下报错：
+  * A：请删除 Genshin Impact Game 中的多余文件 （如 src / Launcher.exe /Installer.exe
+* Q：游戏出现  ```未知错误```怎么办？
+  * A：请提交至 👉[Gitte Issues](https://gitee.com/Morbid-zj/yuanShenEx/issues)👈 \ 或 [QQ群](👉https://jq.qq.com/?_wv=1027&k=1rvEyeSA👈)
+(≧∇≦)ﾉ
+
 
 ## 📑 版权许可
 * 原神启动器EX是《原神》游戏的拓展游戏插件，程序本身版权归 莫欣儿&原琴刻晴师傅 所有
