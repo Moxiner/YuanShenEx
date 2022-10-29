@@ -13,7 +13,7 @@ AUTHOR = "Moxiner"
 url_bg = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/background.png"
 url_ico = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/ico.ico"
 url_PCGameSDK = "https://wwu.lanzouy.com/iQE6V0cvyd2d"
-url_config = ""
+url_config = "https://gitee.com/Morbid-zj/yuanShenEx/blob/master/res/config.ini"
 Error = []
 
 def ErrorMessage(Error = "未知错误，请联系开发者！"):
