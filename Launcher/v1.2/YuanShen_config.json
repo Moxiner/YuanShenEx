@@ -1,0 +1,36 @@
+{
+    "Url":{
+        "PCgameSDK":"",
+        "Background":"",
+        "ico":"",
+        "Launcher":"",
+        "GuojiFu":""
+    },
+    "Path":{
+        "launcherPath":"None",
+        "gamePath":"None"
+    },
+    "Account":[
+        {
+            "name":"默认",
+            "path":"None"
+        }
+        
+    ],
+    "Plugins":{
+        "刻师傅工具箱":{
+            "downlorad":"",
+            "run":"",
+            "path":""
+        },
+        "空莹酒馆原神地图":{
+            "downlorad":"",
+            "run":"",
+            "path":""
+        
+        }
+    },
+    "Setting":{
+        "run":1    
+    }
+}

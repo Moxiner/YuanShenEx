@@ -1,18 +1,36 @@
-from mimetypes import init
 from multiprocessing.sharedctypes import Value
-from operator import mod
+from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui ,Qt
 import configparser
-from os import makedirs, path
+import json
+import os
 from win32ui import CreateFileDialog
 from win32api import ShellExecute
 from winreg import OpenKey, QueryValueEx, HKEY_CURRENT_USER
 
 
-ConfigPath = "YuanShen.ini"
+ConfigPath = "YuanShenEx.json"
+Config = '''{
+    "Url":{
+        "PCgameSDK":"",
+        "Background":"",
+        "ico":"",
+        "Launcher":"",
+        "GuojiFu":""
+    },
+    "Path":{
+        "launcherPath":"None",
+        "gamePath":"None"
+    },
+    "Account":[
+        {
+            "name":"默认","path":"None"}],"Plugins":{"刻师傅工具箱":{"downlorad":"","run":"","path":""},"空莹酒馆原神地图":{"downlorad":"","run":"","path":""}},"Setting":{"run":1}}
+'''
 
-class MouseMove:
+
+
+class Event:
     # 拖动窗口
     def mousePressEvent(self, event):
         """获取鼠标相对窗口的位置"""
@@ -30,6 +48,24 @@ class MouseMove:
     def mouseReleaseEvent(self, mouse_event):
         self.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
 
+    def showWindows(self ,event):
+        """显示窗口的动画"""
+        self.anim = Qt.QPropertyAnimation(self.ui.Main_Widget, b"geometry") 
+        self.anim.setDuration(500)
+        self.anim.setStartValue(Qt.QRect(0, 0, 981, 0))   
+        self.anim.setEndValue(Qt.QRect(0, 0, 981, 571)) 
+        self.anim.setEasingCurve(Qt.QEasingCurve.InQuint)
+        self.anim.start() 
+    def HideWindows(self ,event):
+        """隐藏窗口的动画"""
+        self.anim = Qt.QPropertyAnimation(self.ui.Main_Widget, b"geometry") 
+        self.anim.setDuration(500)
+        self.anim.setStartValue(Qt.QRect(0, 0, 981, 571))   
+        self.anim.setEndValue(Qt.QRect(0, 0, 981, 0)) 
+        self.anim.finished.connect(self.showMinimized)
+        self.anim.setEasingCurve(Qt.QEasingCurve.OutQuint)
+        self.anim.start()
+
 class Tools:
     def GetDesktop():
         key = OpenKey(HKEY_CURRENT_USER,
@@ -41,69 +77,67 @@ class Tools:
                             0x04 | 0x02 , description)  # 1表⽰打开⽂件对话框
         dlg.SetOFNInitialDir(Tools.GetDesktop())  # 设置打开⽂件对话框中的初始显⽰⽬录
         dlg.DoModal()
-        GamePath = dlg.GetPathName()  # 获取选择的⽂件名称
-        GamePath = GamePath[:GamePath.rfind("\\")]
-        return GamePath
-
-            
+        Path = dlg.Path()  # 获取选择的⽂件名称
+        Path = Path[:Path.rfind("\\")]
+        return Path
 
 class OperationConfig:
-    def IOConfig(file, mode , section, option, value = None):
-        InitConfig.InitYuanShen()
-        config = configparser.ConfigParser()
-        config.read(file ,encoding="utf8")
-        if mode == "r":
-            return config.get(section, option)
-        elif mode == "w":
-            config.set(section, option, value)
-            config.write(open(file, "w"))
+    def ReadConfig(file):
+        try:
+            with open(file , encoding="utf8") as f:
+                Config = json.loads(f.read())
+            return Config
+        except Exception:
+            OperationConfig.InitConfig()
 
+    
+    def WriteConfig(file , date):
+        with open(file ,mode="w+", encoding="utf8") as f:
+            Config = json.dumps(date)
+            f.write(Config)
 
-class InitConfig:
-
-    def InitYuanShen():
-        if not path.exists("src"):
-            makedirs("src")
-        if not path.exists(ConfigPath):
-            file = open(ConfigPath, 'w', encoding="UTF-8")
-            file.write("[Path\n[Account]\n[Setting]")
-            OperationConfig.IOConfig(ConfigPath , "w" ,"Path" , "GamePath" , "" ) 
-            file.close()
+    def InitConfig():
+        if not os.path.exists(ConfigPath):
+            OperationConfig.WriteConfig(ConfigPath , Config)
 
     def GetGamePath():
-        try:
-            GamePath = OperationConfig.IOConfig(ConfigPath ,"r", "Path" , "GamePath")
-            return GamePath
-        except Exception:
-            GamePath = Tools.SelectFile( "YuanShen.exe" , "EXE File |YuanShen.exe|")
-            OperationConfig.IOConfig(ConfigPath ,"w", "Path" , "GamePath" , GamePath)
-            return GamePath
+        Config = OperationConfig.ReadConfig(ConfigPath)
+        return Config
+            
 
+        
 
 
 class Switch:
-    def Guanfu():
-        file = InitConfig.GetGamePath() + "/config.ini"
-        OperationConfig.IOConfig(file, "w" ,"General", "channel", "1")
-        OperationConfig.IOConfig(file, "w" , "General", "cps", "mihoyo")
-        OperationConfig.IOConfig(file, "w" , "General", "sub_channel", "1")
+    def mihoyo():
+            '''将配置文件改成官服配置并启动游戏'''
+            GamePath = OperationConfig.ReadConfig(ConfigPath)["Path"]["gamePath"]
+            config = configparser.ConfigParser()
+            config.read(GamePath + "/config.ini" , encoding="utf8")
+            config.set("General", "channel", "1")
+            config.set("General", "cps", "mihoyo")
+            config.set("General", "sub_channel", "1")
+            config.write(open(GamePath + "/config.ini", "w"))
 
-    def BiliBili():
-        file = InitConfig.GetGamePath() + "/config.ini"
-        OperationConfig.IOConfig(file, "w" ,"General", "channel", "14")
-        OperationConfig.IOConfig(file, "w" , "General", "cps", "bilibili")
-        OperationConfig.IOConfig(file, "w" , "General", "sub_channel", "0")
 
-    def GuoJifu():
-        file = InitConfig.GetGamePath() + "/config.ini"
-        OperationConfig.IOConfig(file, "w" ,"General", "channel", "14")
-        OperationConfig.IOConfig(file, "w" , "General", "cps", "bilibili")
-        OperationConfig.IOConfig(file, "w" , "General", "sub_channel", "0")
-    
+
+    def bilibili():
+        '''将配置文件改成B服配置并启动游戏'''
+        GamePath = OperationConfig.ReadConfig(ConfigPath)["Path"]["gamePath"]
+        config = configparser.ConfigParser()
+        config.read(GamePath + "/config.ini", encoding="utf8")
+        config.set("General", "channel", "14")
+        config.set("General", "cps", "bilibili")
+        config.set("General", "sub_channel", "0")
+        config.write(open(GamePath + "/config.ini", "w"))
+            
+
+        
 
 class Call:
     def Start(self):
-        if InitConfig.GetGamePath() == "":
+        GamePath = OperationConfig.ReadConfig(ConfigPath)["Path"]["gamePath"]
+        if GamePath == "":
             pass
         elif self.ui.Mode_ComboBox.currentText() == "启动官服":
             Switch.Guanfu()
@@ -111,7 +145,8 @@ class Call:
             Switch.BiliBili()
         elif self.ui.Mode_ComboBox.currentText() == "启动国际服":
             Switch.GuoJifu()
-        ShellExecute(0, 'open', InitConfig.GetGamePath()  + "/YuanShen.exe" , '' , InitConfig.GetGamePath() , 1)    
+        ShellExecute(0, 'open', GamePath  + "/YuanShen.exe" , '' , GamePath , 1)    
+
     def CallFixedButton(self):
         if self.MenuStatus == None:
             MenuStatus = Anim.ShowFixedFrameAnim(self)
@@ -194,3 +229,4 @@ class Anim:
             self.post_Anim.start()
         MenuStatus = None
         return MenuStatus
+

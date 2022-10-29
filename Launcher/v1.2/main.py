@@ -25,30 +25,59 @@ class Ui_Launcher(QMainWindow):
     
     
     def mousePressEvent(self, event):
-        MouseMove.mousePressEvent(self, event)
+        Event.mousePressEvent(self, event)
     def mouseMoveEvent(self, mouse_event):
-        MouseMove.mouseMoveEvent(self, mouse_event)
+        Event.mouseMoveEvent(self, mouse_event)
     def mouseReleaseEvent(self, mouse_event):
-        MouseMove.mouseReleaseEvent(self, mouse_event)
+        Event.mouseReleaseEvent(self, mouse_event)
+    def showEvent(self, event) :
+        Event.showWindows(self ,event)
+    def HideEvent(self, event) :
+        Event.HideWindows(self ,event)
+    
 
 
     def HideSet(self):
         self.ui.SetFrame.move(-400 ,0)
         self.ui.APPFrame.move(-251 ,0)
         self.ui.FixedFrame.move(-391 ,0)
-        
+
+    def CloseWindows(self):
+        self.anim = Qt.QPropertyAnimation(self, b"windowOpacity")  
+        self.anim.setDuration(500)
+        self.anim.setStartValue(1) 
+        self.anim.setEndValue(0)
+        self.anim.finished.connect(self.close) 
+        self.anim.setEasingCurve(Qt.QEasingCurve.OutQuint)
+        self.anim.start() 
+    
+    def ShowWindows(self):
+        self.anim = Qt.QPropertyAnimation(self, b"windowOpacity") 
+        self.anim.setDuration(500)
+        self.anim.setStartValue(0) 
+        self.anim.setEndValue(1) 
+        self.anim.setEasingCurve(Qt.QEasingCurve.OutQuint)
+        self.anim.start() 
+    
+
+
+    
 
     def KeyBinding(self):
         self.ui.Start_PushButton.clicked.connect(lambda: Call.Start(self))
-        self.ui.Close_Buttom.clicked.connect(self.close)
-        self.ui.Min_Bottom.clicked.connect(self.showMinimized)
+        self.ui.Close_Buttom.clicked.connect(self.CloseWindows)
+        self.ui.Min_Bottom.clicked.connect(lambda:Event.HideWindows(self , 0))
         self.ui.Fixed_Button.clicked.connect(lambda:Call.CallFixedButton(self))
         self.ui.APP_Button.clicked.connect(lambda:Call.CallAPPButton(self))
         self.ui.Set_Button.clicked.connect(lambda:Call.CallSetButton(self))
+        self.close()
+
         
+
 
 if __name__ == "__main__":
     QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
     app = QApplication(argv)
     Launcher = Ui_Launcher()
+    OperationConfig.InitConfig()
     exit(app.exec_())
