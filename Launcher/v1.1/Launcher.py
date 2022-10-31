@@ -7,13 +7,14 @@ from PIL import Image, ImageTk
 from win32api import ShellExecute
 import configparser
 from Downloard_src import download
+import os
 
-VERSION = "1.1.2"
+VERSION = "1.1.3"
 AUTHOR = "Moxiner"
-url_bg = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/background.png"
-url_ico = "https://github.com/Moxiner/YuanShenEx_Launcher/blob/main/src/ico.ico"
+url_bg = "http://www.moxiner.online:8888/down/Xwjj00dseqWo"
+url_ico = "http://www.moxiner.online:8888/down/ZEvze0fecx3u"
+url_config = "http://www.moxiner.online:8888/down/Xgt0CYjzjLCn"
 url_PCGameSDK = "https://wwu.lanzouy.com/iQE6V0cvyd2d"
-url_config = ""
 Error = []
 
 def ErrorMessage(Error = "未知错误，请联系开发者！"):
@@ -98,7 +99,18 @@ def fixbug():
         messagebox.showinfo(title="备用方法修复完成", message="修复完成，请选择启动服务器")
     except:
         ErrorMessage("\n找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 PCGameSDK.dll 文件")
-            
+    # 删除游戏目录多余文件
+    try:
+        if os.path.exists(GamePath + "/src"):
+            os.removedirs(GamePath + "/src")
+        if os.path.exists(GamePath + "/Launcher.exe"):
+            os.remove(GamePath + "/Launcher.exe")
+        if os.path.exists(GamePath + "/Launcher.exe"):
+            os.remove(GamePath + "/Install.exe")
+        if os.path.exists(GamePath + "/Installer.exe"):
+            os.remove(GamePath + "/Installer.exe")
+    except Exception:
+        pass            
 
 
 def main():

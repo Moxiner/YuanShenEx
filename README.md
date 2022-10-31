@@ -5,7 +5,7 @@
 ![Liscense](https://img.shields.io/github/license/Moxiner/YuanShenEx_Launcher)
 ![Downloads](https://img.shields.io/github/downloads/Moxiner/YuanShenEx_Launcher/total)
 ![Release](https://img.shields.io/github/v/release/Moxiner/YuanShenEx_Launcher)
-![BDS](https://img.shields.io/badge/support--Game--version-3.1.0-red)
+![super](https://img.shields.io/badge/support--Game--version-3.1.0-red)
 
 ![Title](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/title.png)
 ## 🎁 原神启动器EX 是什么
@@ -24,7 +24,7 @@
 ----|----|----|
 |推送更新|✔|❌
 |服务器选择|❌|✔
-|占用内存小|约300MB|不足35MB
+|占用内存小|约300MB|约30MB
 |配置简单|❌|✔
 |更多功能|❌|✔
 
@@ -59,14 +59,14 @@
 ## ✨ FQA
 * Q：弹出报错```未找到配置文件，请...```怎么办？
   * A：这说明你找错游戏根目录文件夹了，请结合搜索引擎自行找到，实在不会可以联系 Moxiner 
-* Q：弹出报错```缺少资源文件 XXX\XXXX.png，请...```怎么办？
-  * A：重新解压压缩包内所有文件到游戏根目录即可
+* Q：弹出报错```缺少资源文件 XXX ,请...```怎么办？
+  * A：请重新安装！
 * Q：启动速度慢？
   * A：理论上，原神启动器EX 和 原版启动器启动速度持平，如果启动速度慢绝对不是因为原神启动器EX的原因 （除非给出证据）
-* Q：启动B服出现解析二级地址错误
-  * A：请下载 [PCGameSDK.dll](https://wwu.lanzouy.com/iQE6V0cvyd2d) 并替换到 Genshin Impact Game/YuanShen_Data/Plugins文件夹里面，即可正常进行B服！
-* Q：游戏出现以下报错：
-  * A：请删除 Genshin Impact Game 中的多余文件 （如 src / Launcher.exe /Installer.exe
+* Q：启动B服出现 ```解析二级地址错误```怎么办？
+  * A：请单击启动器中的一键修复！
+* Q：游戏出现以下报错 ```数据异常，请完全卸载游戏,并从官方渠道重新下载安装错误码:31-4302```怎么办？
+  * A：请单击启动器中的一键修复！实在不行，请检查 Genshin Impact Game 中是否有多余文件 （如 src / Launcher.exe /Installer.exe）如果有，请删除！
 * Q：游戏出现  ```未知错误```怎么办？
   * A：请提交至 👉[Gitte Issues](https://gitee.com/Morbid-zj/yuanShenEx/issues)👈 \ 或 [QQ群](👉https://jq.qq.com/?_wv=1027&k=1rvEyeSA👈)
 (≧∇≦)ﾉ
