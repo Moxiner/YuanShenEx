@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\installer\src\Installer\Installer.ui'
+# Form implementation generated from reading ui file 'e:\Documents\Gitee\yuanShenEx\Installer\res\Installer\Installer.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -165,7 +165,7 @@ class Ui_installer(object):
         self.Progress_Frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.Progress_Frame.setObjectName("Progress_Frame")
         self.Progress_Label = QtWidgets.QLabel(self.Progress_Frame)
-        self.Progress_Label.setGeometry(QtCore.QRect(30, 10, 81, 16))
+        self.Progress_Label.setGeometry(QtCore.QRect(30, 10, 381, 16))
         font = QtGui.QFont()
         font.setFamily("微软雅黑")
         font.setBold(True)

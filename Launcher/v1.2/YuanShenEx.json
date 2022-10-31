@@ -1,1 +1,40 @@
-"{\n    \"Url\":{\n        \"PCgameSDK\":\"\",\n        \"Background\":\"\",\n        \"ico\":\"\",\n        \"Launcher\":\"\",\n        \"GuojiFu\":\"\"\n    },\n    \"Path\":{\n        \"launcherPath\":\"None\",\n        \"gamePath\":\"None\"\n    },\n    \"Account\":[\n        {\n            \"name\":\"\u9ed8\u8ba4\",\n            \"path\":\"None\"\n        }\n        \n    ],\n    \"Plugins\":{\n        \"\u523b\u5e08\u5085\u5de5\u5177\u7bb1\":{\n            \"downlorad\":\"\",\n            \"run\":\"\",\n            \"path\":\"\"\n        },\n        \"\u7a7a\u83b9\u9152\u9986\u539f\u795e\u5730\u56fe\":{\n            \"downlorad\":\"\",\n            \"run\":\"\",\n            \"path\":\"\"\n        \n        }\n    },\n    \"Setting\":{\n        \"run\":1    \n    }\n}\n"
+{
+    "Url": {
+        "PCgameSDK": "",
+        "Background": "",
+        "ico": "",
+        "Launcher": "",
+        "GuojiFu": ""
+    },
+    "Path": {
+        "launcherPath":"",
+        "gamePath": "F:\\Genshin Impact Game"
+    },
+    "Account": {
+        "BFu": [
+            {
+                "name": "\u9ed8\u8ba4",
+                "path": ""
+            }
+        ],
+        "GuanFu": [
+            {
+                "name": "\u9ed8\u8ba4",
+                "path": ""
+            }
+        ]
+    },
+    "Plugins": {
+        "\u523b\u5e08\u5085\u5de5\u5177\u7bb1": {
+            "downlorad": "",
+            "path": ""
+        },
+        "\u7a7a\u83b9\u9152\u9986\u539f\u795e\u5730\u56fe": {
+            "downlorad": "",
+            "path": ""
+        }
+    },
+    "Setting": {
+        "run": 1
+    }
+}

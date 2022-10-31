@@ -1,36 +1,39 @@
 {
-    "Url":{
-        "PCgameSDK":"",
-        "Background":"",
-        "ico":"",
-        "Launcher":"",
-        "GuojiFu":""
+    "Url": {
+        "PCgameSDK": "",
+        "Background": "",
+        "ico": "",
+        "Launcher": "",
+        "GuojiFu": ""
     },
-    "Path":{
-        "launcherPath":"None",
-        "gamePath":"None"
+    "Path": {
+        "gamePath": "None"
     },
-    "Account":[
-        {
-            "name":"默认",
-            "path":"None"
-        }
-        
-    ],
-    "Plugins":{
-        "刻师傅工具箱":{
-            "downlorad":"",
-            "run":"",
-            "path":""
+    "Account": {
+        "BFu": [
+            {
+                "name": "默认",
+                "path": ""
+            }
+        ],
+        "GuanFu": [
+            {
+                "name": "默认",
+                "path": ""
+            }
+        ]
+    },
+    "Plugins": {
+        "刻师傅工具箱": {
+            "downlorad": "",
+            "path": ""
         },
-        "空莹酒馆原神地图":{
-            "downlorad":"",
-            "run":"",
-            "path":""
-        
+        "空莹酒馆原神地图": {
+            "downlorad": "",
+            "path": ""
         }
     },
-    "Setting":{
-        "run":1    
+    "Setting": {
+        "run": 1
     }
 }

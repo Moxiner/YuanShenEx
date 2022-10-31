@@ -7,7 +7,6 @@ from Ui_Launcher import Ui_LauncherWindow
 from Script import *
 from sys import argv, exit
 
-
 class Ui_Launcher(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -21,7 +20,7 @@ class Ui_Launcher(QMainWindow):
         self.show()
         self.HideSet()
         self.MenuStatus = None
-
+        
     
     
     def mousePressEvent(self, event):
@@ -42,34 +41,18 @@ class Ui_Launcher(QMainWindow):
         self.ui.APPFrame.move(-251 ,0)
         self.ui.FixedFrame.move(-391 ,0)
 
-    def CloseWindows(self):
-        self.anim = Qt.QPropertyAnimation(self, b"windowOpacity")  
-        self.anim.setDuration(500)
-        self.anim.setStartValue(1) 
-        self.anim.setEndValue(0)
-        self.anim.finished.connect(self.close) 
-        self.anim.setEasingCurve(Qt.QEasingCurve.OutQuint)
-        self.anim.start() 
-    
-    def ShowWindows(self):
-        self.anim = Qt.QPropertyAnimation(self, b"windowOpacity") 
-        self.anim.setDuration(500)
-        self.anim.setStartValue(0) 
-        self.anim.setEndValue(1) 
-        self.anim.setEasingCurve(Qt.QEasingCurve.OutQuint)
-        self.anim.start() 
-    
 
 
     
 
     def KeyBinding(self):
         self.ui.Start_PushButton.clicked.connect(lambda: Call.Start(self))
-        self.ui.Close_Buttom.clicked.connect(self.CloseWindows)
+        self.ui.Close_Buttom.clicked.connect(lambda:Call.CloseWindows(self))
         self.ui.Min_Bottom.clicked.connect(lambda:Event.HideWindows(self , 0))
         self.ui.Fixed_Button.clicked.connect(lambda:Call.CallFixedButton(self))
         self.ui.APP_Button.clicked.connect(lambda:Call.CallAPPButton(self))
         self.ui.Set_Button.clicked.connect(lambda:Call.CallSetButton(self))
+        self.ui.GamePathLook_Button.clicked.connect(lambda:Call.SelectGamePath(self))
         self.close()
 
         

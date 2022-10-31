@@ -23,8 +23,12 @@ from PyQt5 import QtCore, QtGui
 from sys import argv, exit
 from threading import Thread
 
-
-VERSION = "1.0.0"
+url_background = "http://www.moxiner.online:8888/down/Xwjj00dseqWo"
+url_ico = "http://www.moxiner.online:8888/down/ZEvze0fecx3u"
+url_config = "http://www.moxiner.online:8888/down/Xgt0CYjzjLCn"
+url_Launcher = "https://wwu.lanzoue.com/iSgyv0ey1l6h"
+url_pcgamesdk = "http://www.moxiner.online:8888/down/1BLkWFXjGPnF"
+VERSION = "1.1.3"
 
 
 def get_desktop():
@@ -218,7 +222,7 @@ class InstallerWindow(QMainWindow):
             CreateLink(self.LauncherPath + "\YuanShenEx", get_desktop())
 
     def installer_thread(self):
-
+        self.m_flag = False
         # 复制PCGameSDK.dll文件
         try:
             copyfile("src\\PCGameSDK.dll", self.GamePath +
@@ -227,39 +231,51 @@ class InstallerWindow(QMainWindow):
                      "\\YuanShenEx\\src\\PCGameSDK.dll")
         except FileNotFoundError as result:
             # 打印错误信息
-            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/PCGameSDK.dll",
-                     self.LauncherPath + "\\YuanShenEx\\src\\PCGameSDK.dll")
+            download(url_pcgamesdk,
+                     self.LauncherPath + "\\YuanShenEx\\src\\PCGameSDK.dll" ,bar=None)
             copyfile(self.LauncherPath + "\\YuanShenEx\\src\\PCGameSDK.dll",
                      self.GamePath + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll")
+
 
         self.ui.Progress_ProgressBox.setValue(40)
 
         # 复制ico.ico文件
         try:
-            copyfile("\\YuanShenEx\\src\\ico.ico", self.LauncherPath + "\\YuanShenEx\\src\\ico.ico")
+            copyfile("\\YuanShenEx\\src\\ico.ico", self.LauncherPath + "\\YuanShenEx\\src\\ico.ico" )
         except FileNotFoundError as result:
             # 打印错误信息
-            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/ico.ico",
-                     self.LauncherPath + "\\YuanShenEx\\src\\ico.ico")
+            download(url_ico,
+                     self.LauncherPath + "\\YuanShenEx\\src\\ico.ico" , bar=None)
         self.ui.Progress_ProgressBox.setValue(60)
+
 
         # 复制background.png
         try:
             copyfile("src\\background.png", self.LauncherPath +
                      "\\YuanShenEx\\src\\background.png")
         except FileNotFoundError as result:
+            
             # 打印错误信息
-            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/background.png",
-                     self.LauncherPath + "\\YuanShenEx\\src\\background.png")
+            download(url_background,
+                     self.LauncherPath + "\\YuanShenEx\\src\\background.png" , bar=None)
         self.ui.Progress_ProgressBox.setValue(80)
 
         # 复制Launcher.exe启动器
         try:
             copyfile("src\\Launcher.exe", self.LauncherPath + "\\YuanShenEx\\Launcher.exe")
         except FileNotFoundError as result:
+            
             # 打印错误信息
-            download("https://gitee.com/Morbid-zj/yuanShenEx/raw/master/res/Launcher.exe",
-                     self.LauncherPath + "\\YuanShenEx\\Launcher.exe")
+            download(url_Launcher,
+                     self.LauncherPath + "\\YuanShenEx\\Launcher.exe" , bar=None)
+        # 复制config.exe启动器
+        try:
+            copyfile("src\\config.ini", self.LauncherPath + "\\YuanShenEx\\src\\config.ini")
+        except FileNotFoundError as result:
+            
+            # 打印错误信息
+            download(url_config,
+                     self.LauncherPath + "\\YuanShenEx\\src\\config.ini" , bar=None)
         self.ui.Progress_ProgressBox.setValue(100)
         self.ui.Progress_Label.setText("安装完成")
         self.ui.Bottom_Installer_Frame.resize(730, 110)
