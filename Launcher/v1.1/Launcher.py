@@ -9,9 +9,9 @@ import configparser
 from Downloard_src import download
 import os
 
-VERSION = "1.1.3"
+VERSION = "1.1.4"
 AUTHOR = "Moxiner"
-url_bg = "http://www.moxiner.online:8888/down/Xwjj00dseqWo"
+url_bg = "http://www.moxiner.online:8888/down/TZ3DYwXlXHgM"
 url_ico = "http://www.moxiner.online:8888/down/ZEvze0fecx3u"
 url_config = "http://www.moxiner.online:8888/down/Xgt0CYjzjLCn"
 url_PCGameSDK = "https://wwu.lanzouy.com/iQE6V0cvyd2d"
@@ -92,9 +92,13 @@ def fixbug():
         copyfile("src/config.ini", GamePath + "/config.ini")
         messagebox.showinfo(title="修复完成", message="修复完成，请选择启动服务器")
     except FileNotFoundError:
+        if os.path.exists(GamePath + "/YuanShen_Data/Plugins/PCGameSDK.dll"):
+            os.remove(GamePath + "/YuanShen_Data/Plugins/PCGameSDK.dll")
         download(url_PCGameSDK, "src/PCGameSDK.dll")
-        download(url_config, "src/config.ini")
         copyfile("src/PCGameSDK.dll", GamePath + "/YuanShen_Data/Plugins/PCGameSDK.dll")
+        if os.path.exists("src/config.ini"):
+            os.remove(GamePath + "/config.ini")
+        download(url_config, "src/config.ini")
         copyfile("src/config.ini", GamePath + "/config.ini")
         messagebox.showinfo(title="备用方法修复完成", message="修复完成，请选择启动服务器")
     except:
