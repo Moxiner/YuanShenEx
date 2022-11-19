@@ -1,0 +1,14 @@
+[Time] 2022-11-10 15:52:16
+[Game Path] Not Found
+[Launcher Version] 1.1.4
+[Game Version] Not Found
+[Error Code] Traceback (most recent call last):
+  File "e:/Documents/Gitee/yuanShenEx/Launcher/v1.1/Launcher.py", line 188, in <module>
+    main()
+  File "e:/Documents/Gitee/yuanShenEx/Launcher/v1.1/Launcher.py", line 157, in main
+    bg_load = Image.open("src/background.png")
+  File "C:\Users\Moxiner\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\Image.py", line 3068, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'src/background.png'
+
+    

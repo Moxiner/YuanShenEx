@@ -1,4 +1,5 @@
 from shutil import copyfile
+import time
 import traceback
 from PIL import Image, ImageTk
 from tkinter import messagebox
@@ -30,12 +31,23 @@ def ErrorMessage(Error = "未知错误，请联系开发者！"):
 '''
     messagebox.showerror(title="错误", message=str(ErrorInfo))
 
+    logfile = open( "./log.txt", "w+", encoding="utf-8") 
+    logfile.write(f'''[Time] {time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())}
+[Game Path] {GamePath}
+[Launcher Version] {VERSION}
+[Game Version] {GAME_VERSON}
+[Error Code] {traceback.format_exc()}
+    '''
+    )
+    logfile.close
+
 
 def readConfig():
     '''读取配置文件'''
     try:
         global NOTE
         global VERSION
+        global GAME_VERSON
         global GamePath
         config = configparser.ConfigParser()
         config.read("YuanShenEx.ini", encoding="utf8")
@@ -46,6 +58,8 @@ def readConfig():
     except:
         Error.append("\n找不到配置文件\n请将启动器移动至游戏目录\n并确保目录里有 config.ini")
         NOTE = "读取配置文件失败 , 未找到游戏文件" 
+        GAME_VERSON = "Not Found"
+        GamePath = "Not Found"
 
 
 def mihoyo():
