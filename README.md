@@ -5,7 +5,7 @@
 ![Liscense](https://img.shields.io/github/license/Moxiner/YuanShenEx_Launcher)
 ![Downloads](https://img.shields.io/github/downloads/Moxiner/YuanShenEx_Launcher/total)
 ![Release](https://img.shields.io/github/v/release/Moxiner/YuanShenEx_Launcher)
-![super](https://img.shields.io/badge/support--Game--version-3.1.0-red)
+![super](https://img.shields.io/badge/support--Game--version-Nested-red)
 
 ![Title](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/title.png)
 ## 🎁 原神启动器EX 是什么
@@ -17,7 +17,7 @@
 ### 为什么选择我们
 * 不封号 不修改破坏游戏数据
 * 外观美观 近似原版的启动器让您很快上手
-* 双服共用一个游戏资源 为您省下 40G+ 的存储空间
+* 双服共用一个游戏资源 为您省下 50G+ 的存储空间
 * 一键换服 切换服务器方便
 ### 与原版比，我们的优点
 |功能 |原版启动器 |原神启动器EX
