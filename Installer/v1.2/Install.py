@@ -28,7 +28,7 @@ url_ico = "http://www.moxiner.online:8888/down/ZEvze0fecx3u"
 url_config = "http://www.moxiner.online:8888/down/Xgt0CYjzjLCn"
 url_Launcher = "https://wwu.lanzoue.com/iSgyv0ey1l6h"
 url_pcgamesdk = "http://www.moxiner.online:8888/down/1BLkWFXjGPnF"
-VERSION = "1.1.5"
+VERSION = "1.1.3"
 
 
 def get_desktop():
