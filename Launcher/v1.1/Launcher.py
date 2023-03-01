@@ -9,12 +9,12 @@ import configparser
 from Downloard_src import download
 import os
 
-VERSION = "1.1.3"
+VERSION = "1.1.6"
 AUTHOR = "Moxiner"
-url_bg = "http://www.moxiner.online:8888/down/Xwjj00dseqWo"
-url_ico = "http://www.moxiner.online:8888/down/ZEvze0fecx3u"
-url_config = "http://www.moxiner.online:8888/down/Xgt0CYjzjLCn"
-url_PCGameSDK = "https://wwu.lanzouy.com/iQE6V0cvyd2d"
+url_background = "http://www.moxiner.fun:8888/down/PGLZPZNTCwlA"
+url_ico = "http://www.moxiner.fun:8888/down/mV6jhjXZfacB"
+url_config = "http://www.moxiner.fun:8888/down/bevt6xtAstDZ"
+url_pcgameSDK = "http://www.moxiner.fun:8888/down/rnlsPtzNKAXi"
 Error = []
 
 def ErrorMessage(Error = "未知错误，请联系开发者！"):
@@ -88,15 +88,15 @@ def bilibili():
 def fixbug():
     '''一键修复'''
     try:
-        copyfile("src/PCGameSDK.dll", GamePath + "/YuanShen_Data/Plugins/PCGameSDK.dll")
-        copyfile("src/config.ini", GamePath + "/config.ini")
-        messagebox.showinfo(title="修复完成", message="修复完成，请选择启动服务器")
-    except FileNotFoundError:
-        download(url_PCGameSDK, "src/PCGameSDK.dll")
+        download(url_pcgameSDK, "src/PCGameSDK.dll")
         download(url_config, "src/config.ini")
+        download(url_background, "src/background.png")
         copyfile("src/PCGameSDK.dll", GamePath + "/YuanShen_Data/Plugins/PCGameSDK.dll")
         copyfile("src/config.ini", GamePath + "/config.ini")
-        messagebox.showinfo(title="备用方法修复完成", message="修复完成，请选择启动服务器")
+        copyfile("src/background.png", GamePath + "/background.png")
+        messagebox.showinfo(title="修复完成", message="修复完成，请选择启动服务器")
+    except FileNotFoundError:        
+        messagebox.showinfo(title="备用方法修复完成", message="修复失败，无法连接至服务器")
     except:
         ErrorMessage("\n找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 PCGameSDK.dll 文件")
     # 删除游戏目录多余文件
@@ -134,7 +134,7 @@ def main():
         bg_img = ImageTk.PhotoImage(bg_load)
     except:
         Error.append("\n缺少资源文件 src\\background.png \n请重新解压压缩包内所有文件！")
-        download(url_bg, "src/background.png")
+        download(url_background, "src/background.png")
         download(url_ico, "src/background.png")
     bg_load = Image.open("src/background.png")
     bg_img = ImageTk.PhotoImage(bg_load)
