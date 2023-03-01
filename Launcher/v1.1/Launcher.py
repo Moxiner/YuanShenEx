@@ -96,7 +96,7 @@ def fixbug():
         copyfile("src/background.png", GamePath + "/background.png")
         messagebox.showinfo(title="修复完成", message="修复完成，请选择启动服务器")
     except FileNotFoundError:        
-        messagebox.showinfo(title="备用方法修复完成", message="修复失败，无法连接至服务器")
+        messagebox.showinfo(title="修复失败", message="修复失败，无法连接至服务器")
     except:
         ErrorMessage("\n找不到游戏本体\n请将启动器移动至游戏目录\n并确保目录里有 PCGameSDK.dll 文件")
     # 删除游戏目录多余文件
@@ -119,7 +119,7 @@ def main():
     global Note
     global Window
     Window = tk.Tk()
-    Window.title(f"原神启动器 {VERSION}")
+    Window.title(f"原神启动器Ex {VERSION}")
     try:
         Window.iconbitmap("src/ico.ico")
     except:
