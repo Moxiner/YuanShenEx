@@ -23,12 +23,13 @@ from PyQt5 import QtCore, QtGui
 from sys import argv, exit
 from threading import Thread
 
-url_background = "http://www.moxiner.online:8888/down/Xwjj00dseqWo"
-url_ico = "http://www.moxiner.online:8888/down/ZEvze0fecx3u"
-url_config = "http://www.moxiner.online:8888/down/Xgt0CYjzjLCn"
-url_Launcher = "https://wwu.lanzoue.com/iSgyv0ey1l6h"
-url_pcgamesdk = "http://www.moxiner.online:8888/down/1BLkWFXjGPnF"
-VERSION = "1.1.5"
+url_background = "http://www.moxiner.fun:8888/down/PGLZPZNTCwlA"
+url_ico = "http://www.moxiner.fun:8888/down/mV6jhjXZfacB"
+url_config = "http://www.moxiner.fun:8888/down/bevt6xtAstDZ"
+url_pcgameSDK = "http://www.moxiner.fun:8888/down/rnlsPtzNKAXi"
+url_Launcher = "http://www.moxiner.fun:8888/down/lHeY2DIBvSzi"
+url_pcgamesdk = "http://www.moxiner.fun:8888/down/rnlsPtzNKAXi"
+VERSION = "1.1.7"
 
 
 def get_desktop():
@@ -173,7 +174,7 @@ class InstallerWindow(QMainWindow):
             self.LauncherPath + "\\YuanShenEx\\YuanShenEx.ini", encoding="UTF-8")
         self.config_YunShenEx.set("url", "GamePath", self.GamePath)
         self.config_YunShenEx.set("public", "game_version", "3.1.0")
-        self.config_YunShenEx.set("public", "plugin_sdk_version", "3.5.0")
+        self.config_YunShenEx.set("public", "plugin_sdk_version", "3.6.0")
         self.config_YunShenEx.set("GuanFu", "channel", "1")
         self.config_YunShenEx.set("GuanFu", "cps", "mihoyo")
         self.config_YunShenEx.set("GuanFu", "sub_channel", "1")

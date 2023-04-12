@@ -9,7 +9,7 @@ import configparser
 from Downloard_src import download
 import os
 
-VERSION = "1.1.6"
+VERSION = "1.1.7"
 AUTHOR = "Moxiner"
 url_background = "http://www.moxiner.fun:8888/down/PGLZPZNTCwlA"
 url_ico = "http://www.moxiner.fun:8888/down/mV6jhjXZfacB"
