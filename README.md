@@ -10,7 +10,7 @@
 ![Title](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/title.png)
 ## 🎁 原神启动器EX 是什么
 ### 这是一个可以在启动时任意选择进人官服或B服的启动器！
-![效果截图](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png)
+![效果截图](./docs/效果截图.png)
 
 
 ## 🏆 原神启动器EX 的优势
@@ -24,19 +24,21 @@
 ----|----|----|
 |推送更新|✔|❌
 |服务器选择|❌|✔
-|占用内存小|约300MB|约30MB
+|占用内存小|约300MB|约20MB
 |配置简单|❌|✔
 |更多功能|❌|✔
 
+* B服玩家甚至被抛弃了
 
 ## 📚 使用说明
 ### 【Step 1】下载启动器压缩包
 * 请 👉[点击此处](https://github.com/Moxiner/YuanShenEx_Launcher/releases)👈 下载压缩包
 ### 【Step 2】解压压缩包
-* 点击Installer （如果有Bug，请先解压至桌面）
+* 解压放到合适位置
 
+### 【Step 3】原神，启动！
+* 双击 ``` 原神启动器Ex.exe```
 
-![原神Ex安装方法](https://github.com/Moxiner/YuanShenEx/blob/main/docs/%E5%AE%89%E8%A3%85%E6%96%B9%E6%B3%95.gif)
 
 ```
 一般 
@@ -58,7 +60,7 @@
 ### 【Step X】背景图片自定义
 * 背景图片是 ``` YuanShenEx/src/```
 * 背景的图片分辨率为 ``` 1270X730```
-* 请将您的图片等命名等分辨率替换背景图片，重启启动器即可！
+* 可以在 【设置 ➡️ 背景图片】 中修改
 
 ## ✨ FQA
 * Q: 原神启动器Ex 安装目录在哪？
@@ -74,7 +76,7 @@
 * Q：游戏出现以下报错 ```数据异常，请完全卸载游戏,并从官方渠道重新下载安装错误码:31-4302```怎么办？
   * A：请单击启动器中的一键修复！实在不行，请检查 Genshin Impact Game 中是否有多余文件 （如 src / Launcher.exe /Installer.exe）如果有，请删除！
 * Q：游戏出现  ```未知错误```怎么办？
-  * A：请提交至 👉[Gitte Issues](https://gitee.com/Morbid-zj/yuanShenEx/issues)👈 \ 或 [QQ群](👉https://jq.qq.com/?_wv=1027&k=1rvEyeSA👈)
+  * A：请提交至 👉[GitHub Issues](https://github.com/Moxiner/YuanShenEx/issues)👈 \ 或 [QQ群](👉https://jq.qq.com/?_wv=1027&k=1rvEyeSA👈)
 (≧∇≦)ﾉ
 
 
@@ -96,5 +98,11 @@
 |  ![Moxiner](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Moxiner.png)     | ![Morbid](https://gitee.com/Morbid-zj/yuanShenEx/raw/master/docs/headimg/Morbid.png) |
 | :------------------------------------------------------------------:  | :------------------------------------------------------------------: |
 |              [@Moxiner](https://github.com/Moxiner)                    |              [@Morbid](https://gitee.com/Morbid-zj)                  |                       
+
+
+
+感谢 [zhiyiYo](https://github.com/zhiyiYo) 提供 [PyQt-Fluent-Widgets](https://github.com/zhiyiYo/PyQt-Fluent-Widgets) 的 UI 框架
+
+ 🏷️Tips: QFluentWidgets Pro is now released. Click https://qfluentwidgets.com/pages/pro to learn more about it.
 
 ___Copyright © 2022 Moxiner And Morbid (or Moxiners). All Rights Reserved.___
