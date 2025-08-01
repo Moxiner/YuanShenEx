@@ -30,7 +30,7 @@ class Window(SplitFluentWindow):
         self.setting = Setting(self)
         # self.account = Account(self)
         self.setWindowIcon(QIcon("./rescourse/ico.ico"))
-        self.setWindowTitle("原神启动器Ex Dev 2.0.4")
+        self.setWindowTitle("原神启动器Ex Dev 2.1.0")
         self.show()
         self.initNavigation()
         self.initWindow()
