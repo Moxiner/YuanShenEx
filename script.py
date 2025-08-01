@@ -28,8 +28,8 @@ class Switch:
         config = configparser.ConfigParser()
         config.read(GamePath + "/config.ini", encoding="utf8")
         config.set("General", "channel", "1")
-        config.set("General", "cps", "mihoyo")
-        config.set("General", "sub_channel", "1")
+        config.set("General", "cps", "gw_PC")
+        # config.set("General", "sub_channel", "1")
         config.write(open(GamePath + "/config.ini", "w"))
 
     def BiliBili():
@@ -39,7 +39,7 @@ class Switch:
         config.read(GamePath + "/config.ini", encoding="utf8")
         config.set("General", "channel", "14")
         config.set("General", "cps", "bilibili")
-        config.set("General", "sub_channel", "0")
+        # config.set("General", "sub_channel", "0")
         config.write(open(GamePath + "/config.ini", "w"))
 
 
@@ -78,28 +78,6 @@ class OperationConfig:
         return Config
 
 
-class Switch:
-    def Guanfu():
-        """将配置文件改成官服配置并启动游戏"""
-        GamePath = FileOperation.ReadJSon(ConfigPath)["Path"]["gamePath"]
-        config = configparser.ConfigParser()
-        config.read(GamePath + "/config.ini", encoding="utf8")
-        config.set("general", "channel", "1")
-        config.set("general", "cps", "mihoyo")
-        config.set("general", "sub_channel", "1")
-        config.write(open(GamePath + "/config.ini", "w"))
-
-    def BiliBili():
-        """将配置文件改成B服配置并启动游戏"""
-        GamePath = FileOperation.ReadJSon(ConfigPath)["Path"]["gamePath"]
-        config = configparser.ConfigParser()
-        config.read(GamePath + "/config.ini", encoding="utf8")
-        config.set("general", "channel", "14")
-        config.set("general", "cps", "bilibili")
-        config.set("general", "sub_channel", "0")
-        config.write(open(GamePath + "/config.ini", "w"))
-
-
 class Call:
     def SelectGamePath():
         GamePath = Tools.SelectFile("YuanShen.exe", "EXE Files |YuanShen.exe|")
@@ -117,19 +95,46 @@ class Call:
         # 配置游戏配置文件
         if not GamePath or not os.path.exists(GamePath):
             InfoBar.Warnning(self, "启动失败", "未找到对应路径")
-        elif self.home.Select_Mode_ComboBox.currentText() == "启动官服":
+            return
+
+        if self.home.Select_Mode_ComboBox.currentText() == "启动官服":
             Switch.Guanfu()
         elif self.home.Select_Mode_ComboBox.currentText() == "启动B服":
             Switch.BiliBili()
-        if GamePath and not os.path.exists(
-            GamePath + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll"
-        ):
-            if not os.path.exists("PCGameSDK.dll"):
-                shutil.copyfile(
-                    "./rescourse/PCGameSDK.dll",
-                    GamePath + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll",
-                )
-        if os.path.exists(GamePath):
-            ShellExecute(0, "open", GamePath + "/YuanShen.exe", "", GamePath, 1)
+        else:
+            # 如果没有选择有效的模式，则不启动游戏
+            InfoBar.Warnning(self, "启动失败", "请选择有效的启动模式")
+            return
 
+        # 检查并复制PCGameSDK.dll文件
+        dll_path = GamePath + "\\YuanShen_Data\\Plugins\\PCGameSDK.dll"
+        if not os.path.exists(dll_path):
+            source_dll = "./rescourse/PCGameSDK.dll"
+            if os.path.exists(source_dll):
+                try:
+                    shutil.copyfile(source_dll, dll_path)
+                except Exception as e:
+                    InfoBar.Warnning(
+                        self, "复制文件失败", f"无法复制PCGameSDK.dll: {str(e)}"
+                    )
+                    return
+
+        # 检查并复制BLPlatform64目录
+        blplatform_path = GamePath + "\\YuanShen_Data\\Plugins\\BLPlatform64"
+        if not os.path.exists(blplatform_path):
+            source_dir = "./rescourse/BLPlatform64"
+            if os.path.exists(source_dir):
+                try:
+                    shutil.copytree(source_dir, blplatform_path)
+                except Exception as e:
+                    InfoBar.Warnning(
+                        self, "复制目录失败", f"无法复制BLPlatform64: {str(e)}"
+                    )
+                    return
+
+        # 启动游戏
+        try:
+            ShellExecute(0, "open", GamePath + "/YuanShen.exe", "", GamePath, 1)
             Window.showMinimized(self)
+        except Exception as e:
+            InfoBar.Warnning(self, "启动失败", f"无法启动游戏: {str(e)}")

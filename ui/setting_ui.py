@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'e:\Documents\GitHub\YuanShenEx\ui\setting.ui'
+# Form implementation generated from reading ui file 'e:\Documents\YuanShenEx\ui\setting.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -237,7 +237,7 @@ class Ui_setting(object):
         self.Fix_Label.setText(_translate("setting", "修复"))
         self.FixGamePath_Label.setText(_translate("setting", "游戏位置"))
         self.FixGamePath_Button.setText(_translate("setting", "选择位置"))
-        self.FixSDK_Label.setText(_translate("setting", "打入  PCGameSDK.dll  补丁"))
+        self.FixSDK_Label.setText(_translate("setting", "打入B服登录补丁"))
         self.FixSDK_Button.setText(_translate("setting", "修复"))
         self.About_Label.setText(_translate("setting", "关于"))
         self.AboutUpdate_Label.setText(_translate("setting", "检查更新"))
